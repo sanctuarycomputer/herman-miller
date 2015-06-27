@@ -1,0 +1,30 @@
+{
+  "name": "herman-miller",
+  "version": "0.0.1",
+  "description": "An Interactive web experience for Herman Miller, designed by Labour NY.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "build": "rm -rf dist && broccoli build dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanctuarycomputer/herman-miller.git"
+  },
+  "author": "Hugh Francis <me@hughfrancis.me> (http://hughfrancis.me/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sanctuarycomputer/herman-miller/issues"
+  },
+  "homepage": "https://github.com/sanctuarycomputer/herman-miller#readme",
+  "devDependencies": {
+    "broccoli": "^0.16.3",
+    "broccoli-babel-transpiler": "^5.2.3",
+    "broccoli-concat": "0.0.13",
+    "broccoli-funnel": "^0.2.3",
+    "broccoli-merge-trees": "^0.2.1",
+    "loader.js": "^3.2.0",
+    "radium": "^0.13.2",
+    "react": "^0.13.3"
+  }
+}
