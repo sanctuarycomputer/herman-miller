@@ -16,7 +16,8 @@ const npmPath = 'node_modules';
 var npmComponents = [
   'loader.js/loader.js',
   'react/dist/react.js',
-  'radium/dist/radium.js'
+  'radium/dist/radium.js',
+  'interact.js/interact.js'
 ]
 
 /* Load Vendor Libs Js */
