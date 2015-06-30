@@ -23,6 +23,7 @@
     "broccoli-concat": "0.0.13",
     "broccoli-funnel": "^0.2.3",
     "broccoli-merge-trees": "^0.2.1",
+    "interact.js": "^1.2.4",
     "loader.js": "^3.2.0",
     "radium": "^0.13.2",
     "react": "^0.13.3"

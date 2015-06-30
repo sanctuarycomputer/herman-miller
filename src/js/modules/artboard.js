@@ -1,56 +1,28 @@
+import Block from 'herman-miller/modules/block';
+import Wheel from 'herman-miller/modules/wheel';
+
 class Artboard extends React.Component {
-  static propTypes = { 
-    initialCount: React.PropTypes.number 
-  }
-
-  static defaultProps = { 
-    initialCount: 0 
-  }
-
-  /* Constructor is passed initial Props */
-  constructor(props) {
-    super(props);
-    console.log(`Artboard: Initialized with defaultProps: ${props}`);
-    
-    this.state = {
-      count: props.initialCount
-    }
-  }
-  
-  /* Encapsulated Styling with State Based Modifiers*/
   style = {
     base: {
       width: "100%",
-      height: "100%"
-    },
-    1: {
-      "color": "wheat",
-      "background-color": "lavender"
-    },
-    2: {
-      "color": "lavender",
-      "background-color": "wheat"
+      height: "100%",
+      backgroundColor: "#262436"
     }
   }
 
-  /* Template Actions need `this` bound */
-  handleClick = () => {
-    this.setState({ count: this.state.count + 1 });
-  }
-
-  /* Render Cycle runs when `this.state` changes */
   render() {
     return (
-      <div style={[this.style.base, this.style[this.state.count]]}>
-        Welcome to the Interactive Experience.
+      <div style={[this.style.base]}>
+        <Block seed={1} draggable={true} resizable={true}/>
+        <Block seed={2} draggable={true} resizable={true}/>
+        <Block seed={3} draggable={true} resizable={true}/>
+        <Block seed={4} draggable={true} resizable={true}/>
 
-        <button onClick={this.handleClick}>
-          Click Me! {this.state.count}
-        </button>
+        <Wheel seed={1} draggable={true} resizable={false}/>
+        <Wheel seed={2} draggable={true} resizable={false} />
       </div>
     );
   }
 }
 
-/* Wrap Component with Radium for Styling Flow */
 export default new Radium(Artboard);
