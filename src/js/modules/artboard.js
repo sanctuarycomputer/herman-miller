@@ -6,7 +6,8 @@ class Artboard extends React.Component {
     base: {
       width: "100%",
       height: "100%",
-      backgroundColor: "#262436"
+      backgroundColor: "#262436",
+      position: "relative"
     }
   }
 
@@ -18,8 +19,8 @@ class Artboard extends React.Component {
         <Block seed={3} draggable={true} resizable={true}/>
         <Block seed={4} draggable={true} resizable={true}/>
 
-        <Wheel seed={1} draggable={true} resizable={false}/>
-        <Wheel seed={2} draggable={true} resizable={false} />
+        <Wheel seed={1} draggable={true} resizable={true}/>
+        <Wheel seed={2} draggable={true} resizable={true} />
       </div>
     );
   }

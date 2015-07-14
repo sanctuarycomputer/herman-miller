@@ -8,9 +8,10 @@ class Block extends Interactable {
 
   style = {
     base: {
-      width: "200px",
-      height: "200px",
-      position: 'absolute'
+      width: "20vmin",
+      height: "20vmin",
+      position: 'absolute',
+      transform: 'translateZ(0)' // enable hardware acceleration
     },
     1: {
       backgroundColor: '#FFBB6C'

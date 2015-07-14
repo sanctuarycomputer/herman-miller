@@ -1,6 +1,6 @@
-import Artboard from 'herman-miller/modules/artboard';
+import Viewport from 'herman-miller/modules/viewport';
 
 React.render(
-  <Artboard />,
+  <Viewport />,
   document.getElementById('herman-miller-interactive-experience')
 );

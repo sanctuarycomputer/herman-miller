@@ -8,9 +8,9 @@ class Wheel extends Interactable {
 
   style = {
     base: {
-      width: '200px',
-      height: '200px',
-      borderRadius: '100px',
+      width: '20vmin',
+      height: '20vmin',
+      borderRadius: '100%',
       position: 'absolute'
     },
     1: {

@@ -11,6 +11,8 @@ const html = funnel(src, {
   files: ['index.html']
 });
 
+const assets = funnel('assets');
+
 const npmPath = 'node_modules';
 
 var npmComponents = [
@@ -48,4 +50,4 @@ const js = concat(allJs, {
 });
 
 /* Output JS Files & Index HTML */
-module.exports = mergeTrees([html, js]);
+module.exports = mergeTrees([html, js, assets]);
