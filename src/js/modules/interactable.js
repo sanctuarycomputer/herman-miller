@@ -1,21 +1,46 @@
 import { onDrag, onResize } from 'herman-miller/modules/utils';
 
-class Interactable extends React.Component {
+const {
+  findDOMNode,
+  Component
+} = React;
+
+const {
+  bool,
+  array,
+  string
+} = React.PropTypes;
+
+class Interactable extends Component {
   static propTypes = {
-    draggable: React.PropTypes.bool,
-    resizable: React.PropTypes.bool
+    draggable: bool,
+    resizable: bool,
+    assets:    array,
+    format:    string
   }
 
   constructor(props) {
     super(...arguments);
     this.state = {
       draggable: props.draggable,
-      resizable: props.resizable
+      resizable: props.resizable,
+      assets: this._buildAssetPaths(props.seed, props.format)
     }
   }
 
+  _buildAssetPaths(seed, format) {
+    let paths    = [];
+    let basePath = window.eamesInteractive.assetPath;
+
+    for (let i = 1; i < 6; i++) { 
+      paths.push(`${basePath}/${format}/0${seed}0${i}.gif`);
+    }
+
+    return paths;
+  }
+
   componentDidMount() {
-    let interactable = interact(React.findDOMNode(this));
+    let interactable = interact(findDOMNode(this));
     
     if (this.state.draggable) {
       interactable.draggable({

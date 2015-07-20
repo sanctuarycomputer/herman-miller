@@ -13,10 +13,12 @@ class Artboard extends React.Component {
   render() {
     return (
       <div style={[this.style.base]}>
-        <Block seed={1} draggable={true} resizable={true}/>
-        <Block seed={2} draggable={true} resizable={true}/>
-        <Block seed={3} draggable={true} resizable={true}/>
-        <Block seed={4} draggable={true} resizable={true}/>
+        <Block seed={1} draggable={true} resizable={true} format={'square'} />
+        <Block seed={2} draggable={true} resizable={true} format={'square'} />
+        <Block seed={3} draggable={true} resizable={true} format={'square'} />
+        <Block seed={4} draggable={true} resizable={true} format={'square'} />
+        <Block seed={5} draggable={true} resizable={true} format={'square'} />
+        <Block seed={6} draggable={true} resizable={true} format={'square'} />
 
         <Wheel seed={1} draggable={true} resizable={false}/>
         <Wheel seed={2} draggable={true} resizable={false} />
