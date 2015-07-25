@@ -1,6 +1,6 @@
 import { random } from 'herman-miller/modules/utils';
 
-class Person extends React.Component{
+class Figure extends React.Component{
   constructor(props) {
     super(...arguments)
     this.state = ({
@@ -8,12 +8,12 @@ class Person extends React.Component{
     })
   }
 
-  personAnimation = Radium.keyframes({
+  figureAnimation = Radium.keyframes({
     '0%': {left: '0'},
     '100%': {left: '100%'}
   });
 
-  personAnimation2 = Radium.keyframes({
+  figureAnimation2 = Radium.keyframes({
     '0%': {left: '0'},
     '100%': {left: '100%'}
   });
@@ -37,7 +37,7 @@ class Person extends React.Component{
     },
 
     1: {
-      animationName: this.personAnimation,
+      animationName: this.figureAnimation,
       animationDuration: '12s',
       animationTimingFunction: 'linear',
       animationDirection: 'alternate',
@@ -45,7 +45,7 @@ class Person extends React.Component{
     },
     2: {
       backgroundColor: 'yellow',
-      animationName: this.personAnimation2,
+      animationName: this.figureAnimation2,
       animationDuration: '16s',
       animationTimingFunction: 'linear',
       animationDirection: 'alternate-reverse',
@@ -61,4 +61,4 @@ class Person extends React.Component{
 }
 
 /* Wrap Component with Radium for Styling Flow */
-export default new Radium(Person);
+export default new Radium(Figure);

@@ -1,6 +1,7 @@
-import Person from 'herman-miller/modules/person';
+import Figure from 'herman-miller/modules/figure';
 import Block from 'herman-miller/modules/block';
 import Wheel from 'herman-miller/modules/wheel';
+
 
 class Artboard extends React.Component {
   style = {
@@ -14,8 +15,8 @@ class Artboard extends React.Component {
   render() {
     return (
       <div style={[this.style.base]}>
-        <Person seed={1}/>
-        <Person seed={2}/>
+        <Figure seed={1}/>
+        <Figure seed={2}/>
 
         <Block seed={1} draggable={true} resizable={true}/>
         <Block seed={2} draggable={true} resizable={true}/>
