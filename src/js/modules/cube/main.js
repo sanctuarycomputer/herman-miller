@@ -25,9 +25,9 @@ class Cube extends React.Component {
 
   style = {
     cube: {
+      top: "50%",
       left: "50%",
       marginLeft: "-30vmin",
-      top: "50%",
       marginTop: "-30vmin",
       width: "60vmin",
       height: "60vmin",
@@ -44,7 +44,7 @@ class Cube extends React.Component {
       top:    { transform: "translateZ( -30vmin ) rotateX(  -90deg )" },
       bottom: { transform: "translateZ( -30vmin ) rotateX(   90deg )" }
     },
-    flattened : {
+    flattened : { // The viewport perspective once the box is open:
       transform: "translateZ(30vmin) translateY(-6vmin) rotateX(8deg)"
     }
   }
@@ -59,7 +59,9 @@ class Cube extends React.Component {
     return (
       <div style={this.combinedStyles()}>
         <CubeFaceOpenable face="front" isFlat={this.state.isFlat} isOpen={this.state.visibleFace === "front"} />
-        <CubeFace face="back"   isFlat={this.state.isFlat}><Artboard /></CubeFace>
+        <CubeFace face="back"   isFlat={this.state.isFlat}>
+          <Artboard />
+        </CubeFace>
         <CubeFace face="right"  isFlat={this.state.isFlat} />
         <CubeFace face="left"   isFlat={this.state.isFlat} />
         <CubeFace face="top"    isFlat={this.state.isFlat} />

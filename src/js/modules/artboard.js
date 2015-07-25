@@ -1,26 +1,33 @@
+import Assetable from 'herman-miller/modules/assetable';
 import Block from 'herman-miller/modules/block';
 import Wheel from 'herman-miller/modules/wheel';
 
 class Artboard extends React.Component {
+  componentDidMount() {
+    const Global = window.eamesInteractive;
+    Global.advanceReadiness();
+  }
+
   style = {
     base: {
       width: "100%",
       height: "100%",
-      backgroundColor: "#262436",
-      position: "relative"
+      backgroundColor: "#262436"
     }
   }
 
   render() {
     return (
       <div style={[this.style.base]}>
-        <Block seed={1} draggable={true} resizable={true}/>
-        <Block seed={2} draggable={true} resizable={true}/>
-        <Block seed={3} draggable={true} resizable={true}/>
-        <Block seed={4} draggable={true} resizable={true}/>
-
-        <Wheel seed={1} draggable={true} resizable={true}/>
-        <Wheel seed={2} draggable={true} resizable={true} />
+        <Block draggable={true} resizable={true} seed={1} format={'square'} assetCount={5} />
+        <Block draggable={true} resizable={true} seed={2} format={'square'} assetCount={5} />
+        <Block draggable={true} resizable={true} seed={3} format={'square'} assetCount={5} />
+        <Block draggable={true} resizable={true} seed={4} format={'square'} assetCount={5} />
+        <Block draggable={true} resizable={true} seed={5} format={'square'} assetCount={5} />
+        <Block draggable={true} resizable={true} seed={6} format={'square'} assetCount={5} />
+                                                          
+        <Wheel draggable={true} resizable={true} seed={1} format={'wheel'} />
+        <Wheel draggable={true} resizable={true} seed={2} format={'wheel'} />
       </div>
     );
   }

@@ -1,6 +1,4 @@
-import Viewport from 'herman-miller/modules/viewport';
+import Global from 'herman-miller/modules/global';
 
-React.render(
-  <Viewport />,
-  document.getElementById('herman-miller-interactive-experience')
-);
+window.eamesInteractive = new Global(document.getElementById('herman-miller-interactive-experience'));
+window.eamesInteractive.start();

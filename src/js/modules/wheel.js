@@ -3,7 +3,6 @@ import Interactable from 'herman-miller/modules/interactable';
 class Wheel extends Interactable {
   constructor(props) {
     super(...arguments);
-    this.state['seed'] = props.seed;
   }
 
   style = {

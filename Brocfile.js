@@ -11,15 +11,18 @@ const html = funnel(src, {
   files: ['index.html']
 });
 
-const assets = funnel('assets');
-
+const assets = funnel(src, {
+  srcDir: 'assets',
+  destDir: 'assets'
+});
 const npmPath = 'node_modules';
 
 var npmComponents = [
   'loader.js/loader.js',
   'react/dist/react.js',
   'radium/dist/radium.js',
-  'interact.js/interact.js'
+  'interact.js/interact.js',
+  'rsvp/dist/rsvp.js'
 ]
 
 /* Load Vendor Libs Js */
