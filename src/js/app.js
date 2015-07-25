@@ -1,6 +1,4 @@
-import Artboard from 'herman-miller/modules/artboard';
+import Global from 'herman-miller/modules/global';
 
-React.render(
-  <Artboard />,
-  document.getElementById('herman-miller-interactive-experience')
-);
+window.eamesInteractive = new Global(document.getElementById('herman-miller-interactive-experience'));
+window.eamesInteractive.start();
