@@ -1,42 +1,30 @@
 import { onDrag, onResize } from 'herman-miller/modules/utils';
+import Assetable from 'herman-miller/modules/assetable';
 
 const {
-  findDOMNode,
-  Component
+  findDOMNode
 } = React;
 
 const {
-  bool,
-  array,
-  string
+  bool
 } = React.PropTypes;
 
-class Interactable extends Component {
+/*
+ * Assetable Interface
+ *
+ * draggable: bool
+ * resizable: bool
+ */
+class Interactable extends Assetable {
   static propTypes = {
-    draggable: bool,
-    resizable: bool,
-    assets:    array,
-    format:    string
+    draggable:        bool,
+    resizable:        bool
   }
 
   constructor(props) {
     super(...arguments);
-    this.state = {
-      draggable: props.draggable,
-      resizable: props.resizable,
-      assets: this._buildAssetPaths(props.seed, props.format)
-    }
-  }
-
-  _buildAssetPaths(seed, format) {
-    let paths    = [];
-    let basePath = window.eamesInteractive.assetPath;
-
-    for (let i = 1; i < 6; i++) { 
-      paths.push(`${basePath}/${format}/0${seed}0${i}.gif`);
-    }
-
-    return paths;
+    this.state['draggable'] = props.draggable;
+    this.state['resizable'] = props.resizable;
   }
 
   componentDidMount() {

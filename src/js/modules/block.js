@@ -3,7 +3,6 @@ import Interactable from 'herman-miller/modules/interactable';
 class Block extends Interactable {
   constructor(props) {
     super(...arguments);
-    this.state['seed'] = props.seed;
     this.state['currentAsset'] = 1;
   }
 
