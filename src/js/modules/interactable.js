@@ -1,21 +1,34 @@
 import { onDrag, onResize } from 'herman-miller/modules/utils';
+import Assetable from 'herman-miller/modules/assetable';
 
-class Interactable extends React.Component {
+const {
+  findDOMNode
+} = React;
+
+const {
+  bool
+} = React.PropTypes;
+
+/*
+ * Assetable Interface
+ *
+ * draggable: bool
+ * resizable: bool
+ */
+class Interactable extends Assetable {
   static propTypes = {
-    draggable: React.PropTypes.bool,
-    resizable: React.PropTypes.bool
+    draggable:        bool,
+    resizable:        bool
   }
 
   constructor(props) {
     super(...arguments);
-    this.state = {
-      draggable: props.draggable,
-      resizable: props.resizable
-    }
+    this.state['draggable'] = props.draggable;
+    this.state['resizable'] = props.resizable;
   }
 
   componentDidMount() {
-    let interactable = interact(React.findDOMNode(this));
+    let interactable = interact(findDOMNode(this));
     
     if (this.state.draggable) {
       interactable.draggable({

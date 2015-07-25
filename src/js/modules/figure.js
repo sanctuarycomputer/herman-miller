@@ -1,29 +1,33 @@
+import Assetable from 'herman-miller/modules/assetable';
 import { random } from 'herman-miller/modules/utils';
 
-class Figure extends React.Component{
+class Figure extends Assetable{
   constructor(props) {
     super(...arguments)
-    this.state = ({
-      seed: props.seed
-    })
+    this.state['number'] = props.number
   }
 
   figureAnimation = Radium.keyframes({
     '0%': {left: '0'},
-    '100%': {left: '100%'}
+    '100%': {
+      left: '100%'
+    }
   });
 
-  figureAnimation2 = Radium.keyframes({
-    '0%': {left: '0'},
-    '100%': {left: '100%'}
-  });
+  callfunction = () => {
+  };
 
+  componentDidMount() {
+    var element = React.findDOMNode(this);
+    element.addEventListener("animationiteration", this.callfunction, false);
+  }
 
   style = {
     base: {
-      width: '50px',
+      width: '200px',
       height: '200px',
-      backgroundColor: 'blue',
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
       bottom: 0,
       left: 0,
       position: 'absolute',
@@ -32,30 +36,25 @@ class Figure extends React.Component{
       animationFillMode: 'backwards',
       ':hover': {
         animationPlayState: 'paused',
-        backgroundColor: 'red'
       }
     },
 
     1: {
+      backgroundImage: `url(${this.state.assets[0]})`,
       animationName: this.figureAnimation,
-      animationDuration: '12s',
-      animationTimingFunction: 'linear',
-      animationDirection: 'alternate',
-      animationDelay: '4s',
-    },
-    2: {
-      backgroundColor: 'yellow',
-      animationName: this.figureAnimation2,
-      animationDuration: '16s',
+      animationDuration: '6s',
       animationTimingFunction: 'linear',
       animationDirection: 'alternate-reverse',
-      animationDelay: '2s',
+      animationDelay: '1s',
+      ':hover': {
+        backgroundImage: `url(${this.state.assets[1]})`
+      }
     }
   }
 
   render() {
     return (
-      <div style={[this.style.base, this.style[this.state.seed]]}></div>
+      <div style={[this.style.base, this.style[this.state.number]]}></div>
     );
   }
 }
