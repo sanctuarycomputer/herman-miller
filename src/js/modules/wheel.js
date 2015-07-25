@@ -3,28 +3,49 @@ import Interactable from 'herman-miller/modules/interactable';
 class Wheel extends Interactable {
   constructor(props) {
     super(...arguments);
+    this.state['lifecycle'] = 'idle';
   }
 
-  style = {
+  spinAnimation = Radium.keyframes({
+    '0%': {
+      transform: 'rotate(0deg)'
+    },
+    '100%': {
+      transform: 'rotate(360deg)'
+    }
+  })
+
+  wheelStyle = {
     base: {
       width: '200px',
       height: '200px',
       borderRadius: '100px',
-      position: 'absolute'
+      position: 'absolute',
     },
-    1: {
-      backgroundColor: '#B988CC'
+    inner: {
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
+      position: 'absolute',
+      top: '0',
+      width: '100%',
+      height: '100%',
+      backgroundImage: `url(${this.state.assets[0]})`,
     },
-    2: {
-      backgroundColor: '#FFAFAA'
+    active: {
+      animationName: this.spinAnimation,
+      animationDelay: '0s',
+      animationDirection: 'normal',
+      animationDuration: '8s',
+      animationIterationCount: 'infinite',
+      animationTimingFunction: 'ease-in-out'
     }
   }
 
-  render() {
-    return (
-      <div style={[this.style.base, this.style[this.state.seed]]}></div>
-    );
+  onClick() {
+    this.setState({
+      lifecycle: this.state.lifecycle === 'idle' ? 'active' : 'idle'
+    })
   }
 }
 
-export default new Radium(Wheel);
+export default Wheel;

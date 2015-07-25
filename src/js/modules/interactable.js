@@ -47,6 +47,12 @@ class Interactable extends Assetable {
         edges: { left: true, right: true, bottom: true, top: true }
       }).on('resizemove', onResize);
     }
+
+    interactable.on('tap', this.onClick.bind(this));
+  }
+
+  onClick() {
+    throw new Error('Please implement onClick in the child ancestor.');
   }
 }
 
