@@ -1,14 +1,18 @@
 import Artboard from 'herman-miller/modules/artboard';
 import CubeFace from 'herman-miller/modules/cube/cube-face';
 import CubeFaceOpenable from 'herman-miller/modules/cube/cube-face-openable';
+import Assetable from 'herman-miller/modules/assetable';
 
-class Cube extends React.Component {
+class Cube extends Assetable {
 
   componentDidMount() {
     let el = React.findDOMNode(this);
+
+    const Global = window.eamesInteractive;
     
     const flattenBox = () => {
       this.setState({isFlat: true});
+      Global.boxWillOpen();
       el.onclick = null; // kill listener
     }
 
@@ -16,7 +20,7 @@ class Cube extends React.Component {
       event.preventDefault();
       if (this.state.visibleFace !== "front") {
         this.setState({visibleFace: "front"});
-        setTimeout(flattenBox, 1200);
+        setTimeout(flattenBox, 3200);
       } else {
         flattenBox();
       }
@@ -33,6 +37,7 @@ class Cube extends React.Component {
       height: "60vmin",
       position: "absolute",
       transformStyle: "preserve-3d",
+      zIndex: '1',
       transform: "translateZ( -120vmin ) rotateX( 74deg )", // initial perspective
       transition: "transform 3.5s",
     },
@@ -45,7 +50,7 @@ class Cube extends React.Component {
       bottom: { transform: "translateZ( -30vmin ) rotateX(   90deg )" }
     },
     flattened : { // The viewport perspective once the box is open:
-      transform: "translateZ(30vmin) translateY(-6vmin) rotateX(8deg)"
+      transform: "translateZ(42vmin) translateY(0vmin) rotateX(0deg)"
     }
   }
 
@@ -58,14 +63,20 @@ class Cube extends React.Component {
   render() {
     return (
       <div style={this.combinedStyles()}>
-        <CubeFaceOpenable face="front" isFlat={this.state.isFlat} isOpen={this.state.visibleFace === "front"} />
+        <CubeFaceOpenable face="front" 
+                          assetLeft={this.state.assets[1]} 
+                          assetRight={this.state.assets[2]} 
+                          isFlat={this.state.isFlat} 
+                          isOpen={this.state.isFlat} />
+
         <CubeFace face="back"   isFlat={this.state.isFlat}>
           <Artboard />
         </CubeFace>
+
         <CubeFace face="right"  isFlat={this.state.isFlat} />
         <CubeFace face="left"   isFlat={this.state.isFlat} />
         <CubeFace face="top"    isFlat={this.state.isFlat} />
-        <CubeFace face="bottom" isFlat={this.state.isFlat} />
+        <CubeFace face="bottom" isFlat={this.state.isFlat} asset={this.state.assets[0]} />
       </div>
     );
   }

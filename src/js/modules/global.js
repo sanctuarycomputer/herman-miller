@@ -8,6 +8,7 @@ class Global {
     this.ready                    = false;
     this._allComponentsRegistered = false;
     this.readyStack               = [];
+    this.boxOpenStack             = [];
     this.element                  = element;
     this.assetPath                = `${window.location.href}assets`;
     this.loader                   = new Loader();
@@ -21,11 +22,21 @@ class Global {
   onReady(callback) {
     this.readyStack.push(callback);
   }
-
+  
   didBecomeReady() {
     this.readyStack.map(callback => {
       callback();
-    })
+    });
+  }
+
+  onBoxOpen(callback) {
+    this.boxOpenStack.push(callback);
+  }
+  
+  boxWillOpen() {
+    this.boxOpenStack.map(callback => {
+      callback();
+    });
   }
 
   advanceReadiness() {
