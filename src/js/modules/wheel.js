@@ -17,10 +17,10 @@ class Wheel extends Interactable {
 
   wheelStyle = {
     base: {
-      width: '200px',
-      height: '200px',
-      borderRadius: '100px',
-      position: 'absolute',
+      width: '20vmin',
+      height: '20vmin',
+      borderRadius: '100%',
+      position: 'absolute'
     },
     inner: {
       backgroundSize: 'contain',

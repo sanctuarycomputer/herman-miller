@@ -7,17 +7,7 @@ import Optical from 'herman-miller/modules/optical';
 import Moire from 'herman-miller/modules/moire';
 import Lunar from 'herman-miller/modules/lunar';
 
-class Artboard extends Assetable {
-  constructor(props) {
-    super(...arguments); 
-    const Global = window.eamesInteractive;
-    this.state['lifecycle'] = 'loading';
-
-    Global.onReady(() => {
-      this.setState({ lifecycle: 'ready' });
-    });
-  }
-
+class Artboard extends React.Component {
   componentDidMount() {
     const Global = window.eamesInteractive;
     Global.advanceReadiness();
@@ -27,22 +17,13 @@ class Artboard extends Assetable {
     base: {
       width: "100%",
       height: "100%",
-      opacity: 0,
-      transition: '1s all',
       backgroundColor: "#262436"
-    },
-    loading: {
-
-    },
-    ready: {
-      opacity: 1,
-      backgroundImage: `url(${this.state.assets[0]})` 
     }
   }
 
   render() {
     return (
-      <div style={[this.style.base, this.style[this.state.lifecycle]]}>
+      <div style={[this.style.base]}>
         <Block draggable={true} resizable={true} seed={1} format={'square'} assetCount={5} />
         <Block draggable={true} resizable={true} seed={2} format={'square'} assetCount={5} />
         <Block draggable={true} resizable={true} seed={3} format={'square'} assetCount={5} />

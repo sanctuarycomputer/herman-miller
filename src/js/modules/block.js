@@ -16,20 +16,21 @@ class Block extends Interactable {
 
   style = {
     square: {
-      width: "200px",
-      height: "200px",
+      width: "20vmin",
+      height: "20vmin",
     },
     horiz: {
-      width: "400px",
-      height: "200px",
+      width: "40vmin",
+      height: "20vmin",
     },
     vert: {
-      width: "200px",
-      height: "400px",
+      width: "20vmin",
+      height: "40vmin",
     },
     base: {
       position: 'absolute',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      transform: 'translateZ(0)' // enable hardware acceleration
     },
     child: {
       width: '100%',
