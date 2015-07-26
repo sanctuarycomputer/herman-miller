@@ -4,7 +4,7 @@ class Optical extends Wheel {
   render() {
     return (
       <div style={[this.wheelStyle.base]}>
-        <div style={ [this.wheelStyle.inner, this.wheelStyle[this.state.lifecycle]] }>
+        <div style={ [this.wheelStyle.inner, this.wheelStyle[this.state.wheelLifecycle]] }>
         </div> 
       </div>
     );

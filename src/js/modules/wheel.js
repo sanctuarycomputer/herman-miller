@@ -3,7 +3,7 @@ import Interactable from 'herman-miller/modules/interactable';
 class Wheel extends Interactable {
   constructor(props) {
     super(...arguments);
-    this.state['lifecycle'] = 'idle';
+    this.state['wheelLifecycle'] = 'idle';
   }
 
   spinAnimation = Radium.keyframes({
@@ -43,7 +43,7 @@ class Wheel extends Interactable {
 
   onClick() {
     this.setState({
-      lifecycle: this.state.lifecycle === 'idle' ? 'active' : 'idle'
+      wheelLifecycle: this.state.wheelLifecycle === 'idle' ? 'active' : 'idle'
     })
   }
 }
