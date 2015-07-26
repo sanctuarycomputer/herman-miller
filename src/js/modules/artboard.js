@@ -1,6 +1,11 @@
 import Assetable from 'herman-miller/modules/assetable';
+
 import Block from 'herman-miller/modules/block';
-import Wheel from 'herman-miller/modules/wheel';
+
+import Planetary from 'herman-miller/modules/planetary';
+import Optical from 'herman-miller/modules/optical';
+import Moire from 'herman-miller/modules/moire';
+import Lunar from 'herman-miller/modules/lunar';
 
 class Artboard extends React.Component {
   componentDidMount() {
@@ -25,9 +30,18 @@ class Artboard extends React.Component {
         <Block draggable={true} resizable={true} seed={4} format={'square'} assetCount={5} />
         <Block draggable={true} resizable={true} seed={5} format={'square'} assetCount={5} />
         <Block draggable={true} resizable={true} seed={6} format={'square'} assetCount={5} />
+        
+        <Block draggable={true} resizable={true} seed={1} format={'horiz'} assetCount={6} />
+        <Block draggable={true} resizable={true} seed={1} format={'vert'} assetCount={6} />
                                                           
-        <Wheel draggable={true} resizable={true} seed={1} format={'wheel'} />
-        <Wheel draggable={true} resizable={true} seed={2} format={'wheel'} />
+        <Planetary draggable={true} resizable={false} seed={1} format={'wheel'} assetFormat={'png'} assetCount={4} />
+        <Planetary draggable={true} resizable={false} seed={2} format={'wheel'} assetFormat={'png'} assetCount={4} />
+        
+        <Moire draggable={true} resizable={false} seed={3} format={'wheel'} assetFormat={'png'} assetCount={2} />
+        <Lunar draggable={true} resizable={false} seed={4} format={'wheel'} assetFormat={'png'} assetCount={2} />
+        
+        <Optical draggable={true} resizable={false} seed={5} format={'wheel'} assetFormat={'png'} />
+        <Optical draggable={true} resizable={false} seed={6} format={'wheel'} assetFormat={'png'} />
       </div>
     );
   }
