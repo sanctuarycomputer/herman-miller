@@ -13,29 +13,38 @@ class CubeFaceOpenable extends CubeFace {
   extendedStyle = {
     width: "50%",
     height: "100%",
-    border: "1px solid gray",
-    backgroundColor: "black",
     color: "#aaa",
     position: "absolute",
     top: "0",
     bottom: "0",
-    transition: "transform 2.5s",
+    transition: "transform 4s, opacity 2.5s ease-in-out 1.5s",
+    backgroundSize: 'cover'
   }
 
   leftStyles() {
-    let style = {left: "0"}
+    let style = {
+      left: "0",
+      backgroundImage: `url(${this.props.assetLeft})`
+    }
+
     if (this.props.isOpen) {
       style.transform = "rotateY(-150deg)";
       style.transformOrigin = "left";
+      style.opacity = 0;
     }
     return style;
   }
 
   rightStyles() {
-    let style = {right: "0"}
+    let style = {
+      right: "0",
+      backgroundImage: `url(${this.props.assetRight})`
+    }
+
     if (this.props.isOpen) {
       style.transform = "rotateY(150deg)";
       style.transformOrigin = "right";
+      style.opacity = 0;
     }
     return style;
   }
@@ -44,8 +53,8 @@ class CubeFaceOpenable extends CubeFace {
   render() {
     return (
       <div style={this.combinedStyles().concat(this.style.isOpen())}>
-        <div style={[this.extendedStyle, this.leftStyles()]}>{this.props.face} Left</div>
-        <div style={[this.extendedStyle, this.rightStyles()]}>{this.props.face} Right</div>
+        <div style={[this.extendedStyle, this.leftStyles()]}></div>
+        <div style={[this.extendedStyle, this.rightStyles()]}></div>
       </div>
     );
   }

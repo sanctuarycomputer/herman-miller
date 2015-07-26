@@ -16,8 +16,7 @@ class Artboard extends React.Component {
   style = {
     base: {
       width: "100%",
-      height: "100%",
-      backgroundColor: "#262436"
+      height: "100%"
     }
   }
 
