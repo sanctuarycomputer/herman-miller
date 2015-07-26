@@ -10,7 +10,7 @@ class Block extends Interactable {
   constructor(props) {
     super(...arguments);
     this.state['currentAsset'] = 1;
-    this.state['lifecycle'] = 'idle';
+    this.state['blockLifecycle'] = 'idle';
     this.state['nextAsset'] = 2;
   }
 
@@ -42,7 +42,7 @@ class Block extends Interactable {
       left: '0px'
     },
     idleInitialChild: {
-      transform: 'translateX(0%)' 
+      transform: 'translateX(0%)'
     },
     activeInitialChild: {
       transform: 'translateX(-100%)',
@@ -85,7 +85,7 @@ class Block extends Interactable {
       element.addEventListener("otransitionend", this.didFinishAnimating.bind(this, element), true);
 
       this.setState({
-        lifecycle: 'active'
+        blockLifecycle: 'active'
       });
     }
   }
@@ -104,7 +104,7 @@ class Block extends Interactable {
       }
 
       this.setState({
-        lifecycle: 'idle',
+        blockLifecycle: 'idle',
         currentAsset: currentAsset,
         nextAsset: nextAsset
       });
@@ -119,15 +119,13 @@ class Block extends Interactable {
       ]}>
         <div className="initial" style={[
           this.style.child, 
-          this.style[this.state.animatable], 
           this.style[this.state.currentAsset],
-          this.style[`${this.state.lifecycle}InitialChild`]
+          this.style[`${this.state.blockLifecycle}InitialChild`]
         ]}></div>
         <div className="offset" style={[
           this.style.child, 
-          this.style[this.state.animatable], 
           this.style[this.state.nextAsset],
-          this.style[`${this.state.lifecycle}OffsetChild`]
+          this.style[`${this.state.blockLifecycle}OffsetChild`]
         ]}></div>
       </div>
     );
