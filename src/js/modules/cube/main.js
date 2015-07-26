@@ -31,26 +31,27 @@ class Cube extends Assetable {
     cube: {
       top: "50%",
       left: "50%",
-      marginLeft: "-30vmin",
-      marginTop: "-30vmin",
-      width: "60vmin",
-      height: "60vmin",
+      marginLeft: "-40vmin",
+      marginTop: "-40vmin",
+      width: "80vmin",
+      height: "80vmin",
       position: "absolute",
       transformStyle: "preserve-3d",
       zIndex: '1',
-      transform: "translateZ( -120vmin ) rotateX( 74deg )", // initial perspective
+      transform: "translateZ( -240vmin ) rotateX( 74deg )", // initial perspective
       transition: "transform 3.5s",
     },
     visibleFace: {
-      front:  { transform: "translateZ( -30vmin )" },
-      back:   { transform: "translateZ( -30vmin ) rotateX( -180deg )" },
-      right:  { transform: "translateZ( -30vmin ) rotateY(  -90deg )" },
-      left:   { transform: "translateZ( -30vmin ) rotateY(   90deg )" },
-      top:    { transform: "translateZ( -30vmin ) rotateX(  -90deg )" },
-      bottom: { transform: "translateZ( -30vmin ) rotateX(   90deg )" }
+      front:  { transform: "translateZ( -40vmin )" },
+      back:   { transform: "translateZ( -40vmin ) rotateX( -180deg )" },
+      right:  { transform: "translateZ( -40vmin ) rotateY(  -90deg )" },
+      left:   { transform: "translateZ( -40vmin ) rotateY(   90deg )" },
+      top:    { transform: "translateZ( -40vmin ) rotateX(  -90deg )" },
+      bottom: { transform: "translateZ( -40vmin ) rotateX(   90deg )" }
     },
     flattened : { // The viewport perspective once the box is open:
-      transform: "translateZ(42vmin) translateY(0vmin) rotateX(0deg)"
+      transition: "transform 2.5s",
+      transform: "translateZ(40vmin)"
     }
   }
 

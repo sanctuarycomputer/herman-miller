@@ -37,15 +37,19 @@ class Loader {
   _loadPath(path) {
     return new RSVP.Promise((resolve, reject) => {
       let image = new Image();
+      image.src = path;
+      
+      if (image.complete) {
+        resolve(image);
+        return; // don't make unneeded listeners
+      }
       image.onload = () => {
+        image.onload = null;
         resolve(image);
       }
       image.onerror = () => {
+        image.onerror = null;
         reject(`Asset: ${path} did not load.`);
-      }
-      image.src = path;
-      if (image.complete) {
-        resolve(image);
       }
     });
   }

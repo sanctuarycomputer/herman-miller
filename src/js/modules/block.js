@@ -12,6 +12,12 @@ class Block extends Interactable {
     this.state['currentAsset'] = 1;
     this.state['blockLifecycle'] = 'idle';
     this.state['nextAsset'] = 2;
+
+    // Set props / state based styles
+    let baseStyle = this.style.base;
+    let {x = 0, y = 0} = props.cooridnates || {};
+    baseStyle.left = `${x}px`;
+    baseStyle.bottom  = `${y}px`;
   }
 
   style = {
@@ -108,6 +114,7 @@ class Block extends Interactable {
         currentAsset: currentAsset,
         nextAsset: nextAsset
       });
+      transform: 'translateZ(0)' // enable hardware acceleration
     }
   }
 

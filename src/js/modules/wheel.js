@@ -20,7 +20,7 @@ class Wheel extends Interactable {
       width: '20vmin',
       height: '20vmin',
       borderRadius: '100%',
-      position: 'absolute'
+      position: 'absolute',
     },
     inner: {
       backgroundSize: 'contain',

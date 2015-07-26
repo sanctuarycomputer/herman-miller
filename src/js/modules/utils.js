@@ -1,9 +1,17 @@
 const MIN_BOX_DIMENSIONS_PX = 100;
 const MAX_BOX_DIMENSIONS_PX = 400;
 
-const random = function(min, max) {
+const random = function(min = 0, max = 1) {
   return Math.random() * (max - min) + min;
-}
+};
+
+const vmin = function() {
+  let bodyRect = document.body.getBoundingClientRect();
+  console.log(bodyRect);
+  let vmin = bodyRect.width < bodyRect.height ? bodyRect.width : bodyRect.height;
+  vmin /= 100;
+  return Math.round(vmin);
+};
 
 // ----------------------------------------------------------------------------
 // Drag helpers
@@ -87,4 +95,4 @@ const onResizeEnd = function(event) {
 }
 
 
-export { random, onDrag, onResize, onDragEnd, onResizeStart, onResizeEnd };
+export { random, onDrag, onResize, onDragEnd, onResizeStart, onResizeEnd, vmin };

@@ -6,7 +6,7 @@ const {
 } = React;
 
 // Set global resizing handle margin:
-interact.margin(30);
+interact.margin(20);
 
 const {
   bool

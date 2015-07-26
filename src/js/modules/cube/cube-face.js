@@ -1,27 +1,26 @@
 class CubeFace extends React.Component {
   style = {
     base: {
-      width: "60vmin",
-      height: "60vmin",
+      width: "80vmin",
+      height: "80vmin",
       position: "absolute",
       backgroundSize: 'cover',
       boxSizing: "border-box"
     },
-    front:  { transform: "translateZ( 30vmin )" },
-    back:   { transform: "translateZ( -30vmin )" },
-    right:  { transform: "translateZ( -30vmin ) rotateY(  90deg )", transformOrigin: "right"  },
-    left:   { transform: "translateZ( -30vmin ) rotateY( -90deg )", transformOrigin: "left"   },
-    top:    { transform: "translateZ( -30vmin ) rotateX(  90deg )", transformOrigin: "top"    },
-    bottom: { transform: "translateZ( -30vmin ) rotateX( -90deg )", transformOrigin: "bottom", backgroundImage: `url(${this.props.asset})` },
+    front:  { transform: "translateZ( 40vmin )" },
+    back:   { transform: "translateZ( -40vmin )" },
+    right:  { transform: "translateZ( -40vmin ) rotateY(  90deg )", transformOrigin: "right"  },
+    left:   { transform: "translateZ( -40vmin ) rotateY( -90deg )", transformOrigin: "left"   },
+    top:    { transform: "translateZ( -40vmin ) rotateX(  90deg )", transformOrigin: "top"    },
+    bottom: { transform: "translateZ( -40vmin ) rotateX( -90deg )", transformOrigin: "bottom", backgroundImage: `url(${this.props.asset})` },
 
     flat: {
-      base:   { transform: "translateZ( -29.5vmin )", transition: "transform 2s ease, opacity 0.5s ease-out" },
-      front:  { transform: "translateZ( 0vmin )" },
-      back:   { transform: "translateZ( -29.5vmin )" },
-      right:  { transform: "translateZ( -30vmin ) rotateY(  182deg )" },
-      left:   { transform: "translateZ( -30vmin ) rotateY( -182deg )" },
-      top:    { transform: "translateZ( -30vmin ) rotateX(  182deg )" },
-      bottom: { transform: "translateZ( -30vmin ) rotateX( -182deg )", opacity: '0', transition: '0s' }
+      base:   { transform: "translateZ( -39.5vmin )", transition: "transform 2s ease, opacity 0.5s ease-out" },
+      front:  { transform: "translateZ( 200vmin )", opacity: 0 }, // exploding top
+      right:  { transform: "translateZ( -40vmin ) rotateY(  183deg )" },
+      left:   { transform: "translateZ( -40vmin ) rotateY( -183deg )" },
+      top:    { transform: "translateZ( -40vmin ) rotateX(  183deg )" },
+      bottom: { transform: "translateZ( -40vmin ) rotateX( -183deg )" }
     }
   }
 
