@@ -4,7 +4,6 @@
   "description": "An Interactive web experience for Herman Miller, designed by Labour NY.",
   "main": "index.js",
   "scripts": {
-    "test": "test",
     "build": "rm -rf dist && broccoli build dist"
   },
   "repository": {
