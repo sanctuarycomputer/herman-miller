@@ -1,0 +1,19 @@
+---
+dependencies:
+  cache_directories:
+    - node_modules
+  override:
+    - npm install
+    - npm install -g broccoli-cli
+
+test:
+  override:
+    - exit 0
+
+deployment:
+  build:
+    branch: build 
+    commands:
+      - npm run build 
+      - git remote add build dokku@sanctuarycomputer.link:herman-miller
+      - git subtree push --prefix=dist build master

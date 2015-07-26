@@ -11,6 +11,15 @@ const html = funnel(src, {
   files: ['index.html']
 });
 
+const env = funnel(src, {
+  files: ['.env']
+});
+
+const static = funnel(src, {
+  srcDir: '.static',
+  destDir: '.static'
+});
+
 const assets = funnel(src, {
   srcDir: 'assets',
   destDir: 'assets'
@@ -54,4 +63,4 @@ const js = concat(allJs, {
 });
 
 /* Output JS Files & Index HTML */
-module.exports = mergeTrees([html, js, assets]);
+module.exports = mergeTrees([html, js, assets, env, static]);
