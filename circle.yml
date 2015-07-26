@@ -15,6 +15,8 @@ deployment:
     branch: build 
     commands:
       - npm run build-ci
+      - git config user.email "cirleci@sanctuary.computer"
+      - git config user.name "Sanctuary CI"
       - git add .
       - git commit -m "Commit for CI"
       - git remote add build dokku@sanctuarycomputer.link:herman-miller
