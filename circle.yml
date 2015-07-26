@@ -20,4 +20,4 @@ deployment:
       - git add .
       - git commit -m "Commit for CI"
       - git remote add build dokku@sanctuarycomputer.link:herman-miller
-      - git subtree push --prefix=dist-ci build master
+      - git push build `git subtree split --prefix=dist-ci build`:master --force
