@@ -1,7 +1,6 @@
 import Assetable from 'herman-miller/modules/assetable';
-
 import Block from 'herman-miller/modules/block';
-
+import Figure from 'herman-miller/modules/figure';
 import Planetary from 'herman-miller/modules/planetary';
 import Optical from 'herman-miller/modules/optical';
 import Moire from 'herman-miller/modules/moire';
@@ -23,6 +22,9 @@ class Artboard extends React.Component {
   render() {
     return (
       <div style={[this.style.base]}>
+        <Figure seed={1} format={'figure'} assetCount={2} />
+        <Figure seed={2} format={'figure'} assetCount={2} />
+
         <Block draggable={true} resizable={true} seed={1} format={'square'} assetCount={5} />
         <Block draggable={true} resizable={true} seed={2} format={'square'} assetCount={5} />
         <Block draggable={true} resizable={true} seed={3} format={'square'} assetCount={5} />

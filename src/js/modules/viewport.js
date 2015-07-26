@@ -27,7 +27,7 @@ class Viewport extends Assetable {
       backgroundSize: 'cover',
       backgroundPosition: '50% 50%',
       opacity: 0,
-      transition: "opacity 2.5s",
+      transition: "opacity 5s",
       zIndex: '-1',
       pointerEvents: 'none'
     },
