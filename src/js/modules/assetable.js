@@ -36,21 +36,26 @@ class Assetable extends Component {
     super(...arguments);
     const Global = window.eamesInteractive;
 
+    let seed = props.seed || 1;
     let assetCount = props.assetCount || 1;
     let assetFormat = props.assetFormat || 'gif';
 
     this.state = {
-      seed:             props.seed,
-      assetCount:       assetCount,
-      assetFormat:      assetFormat,
-      assets:           this._buildAssetPaths(props.seed, props.format, assetCount, assetFormat),
+      seed,
+      assetCount,
+      assetFormat,
+      lifecycle:        'loading',
+      assets:           this._buildAssetPaths(seed, props.format, assetCount, assetFormat),
       format:           props.format,
-      key:              `${props.format}-${props.seed}`,
+      key:              `${props.format}-${seed}`,
       firstAssetLoaded: false,
       allAssetsLoaded:  false
     }
 
     Global.addComponentToRegistry(this.state.key);
+    Global.onReady(() => {
+      this.setState({ lifecycle: 'ready' });
+    });
 
     let assetPromiseHash = Global.loader.loadPaths(this.state.assets);
 
@@ -77,7 +82,7 @@ class Assetable extends Component {
     let paths    = [];
     let basePath = window.eamesInteractive.assetPath;
 
-    for (let i = 1; i < (assetCount + 1); i++) { 
+    for (let i = 1; i <= assetCount; i++) { 
       paths.push(`${basePath}/${format}/0${seed}0${i}.${assetFormat}`);
     }
 

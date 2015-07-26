@@ -1,5 +1,7 @@
 import Artboard from 'herman-miller/modules/artboard';
 import Loader from 'herman-miller/modules/loader';
+import Viewport from 'herman-miller/modules/viewport';
+
 
 class Global {
   constructor(element) {
@@ -13,7 +15,7 @@ class Global {
   }
 
   start() {
-    React.render(<Artboard seed={1} format={'background'} assetFormat={'jpg'} />, this.element);
+    React.render(<Viewport format={'background'} assetFormat={'jpg'} />, this.element);
   }
 
   onReady(callback) {

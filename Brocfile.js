@@ -24,7 +24,6 @@ const assets = funnel(src, {
   srcDir: 'assets',
   destDir: 'assets'
 });
-
 const npmPath = 'node_modules';
 
 var npmComponents = [
