@@ -6,16 +6,18 @@ class Figure extends Assetable{
     super(...arguments)
     this.state['facing'] = 'left';
     this.state['figureState'] = 'idle';
-    this.state['figureLoop'] = 'walking';
+    this.state['figureLoop'] = '';
+    this.state['animationStart'] =  15 + (this.state.seed * 15)
+
 
     const Global = window.eamesInteractive;
     Global.onBoxOpen(() => {
       this.setState({
-        figureState: 'active' 
+        figureState: 'active'
       });
       // Start the Looking/Walking Loop
-      let nextLook = random(6000, 10000);
-      window.setTimeout(this.startLooking, nextLook);
+      let firstLook = this.state['animationStart'] * 1000;
+      window.setTimeout(this.startLooking, firstLook);
     });
   }
 
@@ -35,7 +37,7 @@ class Figure extends Assetable{
     this.setState({
       figureLoop: 'looking'
     });
-    let lookLength = random(6000, 10000);
+    let lookLength = random(5000, 9000);
     window.setTimeout(this.stopLooking, lookLength);
   }
 
@@ -60,12 +62,13 @@ class Figure extends Assetable{
 
   style = {
     base: {
-      width: '240px',
-      height: '240px',
+      width: '160px',
+      height: '160px',
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
       bottom: 0,
-      left: '-45%',
+      left: '0',
+      zIndex: '10',
       opacity: '0',
       position: 'absolute',
       animationIterationCount: 'infinite',
@@ -73,19 +76,26 @@ class Figure extends Assetable{
       animationFillMode: 'backwards',
       backgroundImage: this.walkCycle,
       animationName: this.figureAnimation,
-      animationDuration: '18s',
+      animationDuration: '15s',
       animationTimingFunction: 'linear',
       animationDirection: 'alternate-reverse',
+      WebkitTransform: 'translate3d(0,0,0)',
+      WebkitBackfaceVisibility: 'hidden'
     },
 
     1: {
-      transition: '1s opacity 12s',
-      animationDelay: '12s'
+      transition: `1s opacity ${15 + (this.state.seed * 15)}s`,
+      animationDelay: `${this.state.animationStart}s`
     },
-    
+
     2: {
-      transition: '1s opacity 18s',
-      animationDelay: '18s'
+      transition: `1s opacity ${15 + (this.state.seed * 15)}s`,
+      animationDelay: `${this.state.animationStart}s`
+
+    },
+    3: {
+      transition: `1s opacity ${15 + (this.state.seed * 15)}s`,
+      animationDelay: `${this.state.animationStart}s`
     },
 
     looking: {

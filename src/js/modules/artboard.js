@@ -24,6 +24,7 @@ class Artboard extends React.Component {
       <div style={[this.style.base]}>
         <Figure seed={1} format={'figure'} assetCount={2} />
         <Figure seed={2} format={'figure'} assetCount={2} />
+        <Figure seed={3} format={'figure'} assetCount={2} />
 
         <Block draggable={true} resizable={true} seed={1} format={'square'} assetCount={5} />
         <Block draggable={true} resizable={true} seed={2} format={'square'} assetCount={5} />
