@@ -1,46 +1,48 @@
 import Assetable from 'herman-miller/modules/assetable';
+import Artboard from 'herman-miller/modules/artboard';
 import Cube from 'herman-miller/modules/cube/main';
 
 class Viewport extends Assetable {
   constructor() {
     super(...arguments);
-    this.state['boxLifecycle'] = 'idle';
+    this.state['loadingState'] = 'loading';
     const Global = window.eamesInteractive;
-    Global.onBoxOpen(() => {
-      this.setState({
-        boxLifecycle: 'active'
-      })
+    Global.onReady(() => {
+      this.state['loadingState'] = 'finishedLoading';
     });
   }
   style = {
     base: {
-      width: "100%",
-      height: "100%",
+      width: '980px',
+      height: '551px',
       perspective: "1750px",
       position: "relative",
       backgroundColor: 'rgb(191, 182, 195)',
+      overflow: 'hidden'
     },
-    background: {
-      backgroundImage: `url(${this.state.assets[0]})`,
+    loader: {
       width: '100%',
       height: '100%',
-      backgroundSize: 'cover',
+      backgroundImage: `url(${this.state.assets[0]})`,
       backgroundPosition: '50% 50%',
-      opacity: 0,
-      transition: "opacity 5s",
-      zIndex: '-1',
-      pointerEvents: 'none'
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '50px',
+      opacity: 1,
+      pointerEvents: 'none',
+      transition: "opacity 2.5s",
+      position: 'absolute'
     },
-    active: {
-      opacity: 1
+    finishedLoading: {
+      opacity: 0 
     }
   }
 
   render() {
     return (
       <div style={[this.style.base]}>
+        <div style={[this.style.loader, this.style[this.state.loadingState]]}/>
         <Cube seed={1} format={'box'} assetCount={3} assetFormat={'jpg'} />
-        <div style={ [this.style.background, this.style[this.state.boxLifecycle]]  } />
+        <Artboard seed={1} format={'background'} assetFormat={'jpg'} />
       </div>
     );
   }

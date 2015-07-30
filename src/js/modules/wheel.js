@@ -4,6 +4,21 @@ class Wheel extends Interactable {
   constructor(props) {
     super(...arguments);
     this.state['wheelLifecycle'] = 'idle';
+    this.state['wheelIndex'] = props.wheelIndex;
+    switch(this.props.wheelIndex) {
+      case 1:
+        this.x = 300;
+        this.y = 171;
+        break;
+      case 2:
+        this.x = 300;
+        this.y = 71;
+        break;
+      case 3:
+        this.x = 400;
+        this.y = 71;
+        break;
+    }
   }
 
   spinAnimation = Radium.keyframes({
@@ -17,10 +32,19 @@ class Wheel extends Interactable {
 
   wheelStyle = {
     base: {
-      width: '20vmin',
-      height: '20vmin',
+      width: '100px',
+      height: '100px',
       borderRadius: '100%',
       position: 'absolute'
+    },
+    wheel1: {
+      transform: 'translate3d(300px, 171px, 0px)'
+    },
+    wheel2: {
+      transform: 'translate3d(300px, 71px, 0px)'
+    },
+    wheel3: {
+      transform: 'translate3d(400px, 71px, 0px)'
     },
     inner: {
       backgroundSize: 'contain',
