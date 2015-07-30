@@ -7,21 +7,27 @@ class CubeFace extends React.Component {
       backgroundSize: 'cover',
       boxSizing: "border-box"
     },
-    front:  { transform: "translateZ( 30vmin )" },
-    back:   { transform: "translateZ( -30vmin )" },
-    right:  { transform: "translateZ( -30vmin ) rotateY(  90deg )", transformOrigin: "right"  },
-    left:   { transform: "translateZ( -30vmin ) rotateY( -90deg )", transformOrigin: "left"   },
-    top:    { transform: "translateZ( -30vmin ) rotateX(  90deg )", transformOrigin: "top"    },
-    bottom: { transform: "translateZ( -30vmin ) rotateX( -90deg )", transformOrigin: "bottom", backgroundImage: `url(${this.props.asset})` },
-
+    front:  { 
+      transform: "translateZ( 30vmin )" 
+    },
+    bottom: { 
+      transform: "translateZ( -30vmin ) rotateX( -90deg )", 
+      transformOrigin: "bottom", 
+      backgroundImage: `url(${this.props.asset})` 
+    },
     flat: {
-      base:   { transform: "translateZ( -29.5vmin )", transition: "transform 2s ease, opacity 0.5s ease-out" },
-      front:  { transform: "translateZ( 0vmin )" },
-      back:   { transform: "translateZ( -29.5vmin )" },
-      right:  { transform: "translateZ( -30vmin ) rotateY(  182deg )" },
-      left:   { transform: "translateZ( -30vmin ) rotateY( -182deg )" },
-      top:    { transform: "translateZ( -30vmin ) rotateX(  182deg )" },
-      bottom: { transform: "translateZ( -30vmin ) rotateX( -182deg )", opacity: '0', transition: '0s' }
+      base:   { 
+        transform: "translateZ( -29.5vmin )", 
+        transition: "transform 2s ease, opacity 0.5s ease-out" 
+      },
+      front:  { 
+        transform: "translateZ( 0vmin )" 
+      },
+      bottom: { 
+        transform: "translateZ( -30vmin ) rotateX( -182deg )", 
+        opacity: '0', 
+        transition: '0s' 
+      }
     }
   }
 
@@ -38,12 +44,9 @@ class CubeFace extends React.Component {
 
   render() {
     return (
-      <div style={this.combinedStyles()}>
-        {this.props.children}
-      </div>
+      <div style={this.combinedStyles()} />
     );
   }
 }
 
-/* Wrap Component with Radium for Styling Flow */
 export default new Radium(CubeFace);
