@@ -1,5 +1,3 @@
-import Assetable from 'herman-miller/modules/assetable';
-import {vmin} from 'herman-miller/modules/utils';
 import Block from 'herman-miller/modules/block';
 import Figure from 'herman-miller/modules/figure';
 import Planetary from 'herman-miller/modules/planetary';
@@ -7,21 +5,9 @@ import Optical from 'herman-miller/modules/optical';
 import Moire from 'herman-miller/modules/moire';
 import Lunar from 'herman-miller/modules/lunar';
 
+const SIZE = 17.5;
+
 class Artboard extends React.Component {
-  constructor(props) {
-    super(...props);
-
-    let numPerRow = this.blocks.count >> 1;
-    let blockDimensions = vmin() * 20;
-
-    for (let i = 0; i < this.blocks.count; i++) {
-      this.blocks.coordinates.push({
-        x: blockDimensions * (i % numPerRow),
-        y: blockDimensions * Math.floor(i / numPerRow)
-      });
-    }
-  }
-
   componentDidMount() {
     const Global = window.eamesInteractive;
     Global.advanceReadiness();
@@ -37,48 +23,59 @@ class Artboard extends React.Component {
   blocks = {
     count: 6,
     props: {
+      seed: 1, // default
+      widthHeightVmins: [SIZE, SIZE],
       draggable: true,
       resizable: true,
-      format: 'square',
       assetCount: 5,
-    },
-    coordinates: []
+    }
   }
 
   wheels = {
     count: 2,
     props: {
+      widthHeightVmins: [SIZE, SIZE],
       draggable: true,
       resizable: true,
-      format: 'wheel'
-    },
-    coordinates: []
+      format: 'wheel',
+      assetFormat: 'png'
+    }
   }
 
   render() {
+
+    let blockProps = this.blocks.props;
+    let wheelProps = this.wheels.props;
+
     let blockElements = [];
+
+    // Add square blocks
     for (let i = 1; i <= this.blocks.count; i++) {
-      blockElements.push(<Block {...this.blocks.props} seed={i} coordinates={this.blocks.coordinates[i - 1]} />);
+      blockElements.push(<Block {...blockProps} seed={i} />);
     }
 
+    blockElements.push(
+      <Block {...blockProps} widthHeightVmins={[SIZE * 2, SIZE * 1]} assetCount={6} />,
+      <Block {...blockProps} widthHeightVmins={[SIZE * 1, SIZE * 2]} assetCount={6} />
+    )
+
+    // Do the render:
     return (
       <div style={[this.style.base]}>
         <Figure seed={1} format={'figure'} assetCount={2} />
         <Figure seed={2} format={'figure'} assetCount={2} />
-
+                                   
+        <Planetary {...wheelProps} seed={1} assetCount={4} />
+        <Planetary {...wheelProps} seed={2} assetCount={4} />
+        
+        <Moire {...wheelProps} seed={3} assetCount={2} />
+        <Lunar {...wheelProps} seed={4} assetCount={2} />
+        
+        <Optical {...wheelProps} seed={5} />
+        <Optical {...wheelProps} seed={6} />
+        
         {blockElements}
 
-        <Block draggable={true} resizable={true} seed={1} format={'horiz'} assetCount={6} />
-        <Block draggable={true} resizable={true} seed={1} format={'vert'} assetCount={6} />
-                                                          
-        <Planetary draggable={true} resizable={false} seed={1} format={'wheel'} assetFormat={'png'} assetCount={4} />
-        <Planetary draggable={true} resizable={false} seed={2} format={'wheel'} assetFormat={'png'} assetCount={4} />
-        
-        <Moire draggable={true} resizable={false} seed={3} format={'wheel'} assetFormat={'png'} assetCount={2} />
-        <Lunar draggable={true} resizable={false} seed={4} format={'wheel'} assetFormat={'png'} assetCount={2} />
-        
-        <Optical draggable={true} resizable={false} seed={5} format={'wheel'} assetFormat={'png'} />
-        <Optical draggable={true} resizable={false} seed={6} format={'wheel'} assetFormat={'png'} />
       </div>
     );
   }

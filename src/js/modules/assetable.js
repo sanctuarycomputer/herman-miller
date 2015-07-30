@@ -37,17 +37,23 @@ class Assetable extends Component {
     const Global = window.eamesInteractive;
 
     let seed = props.seed || 1;
+    let format = props.format;
+    if (!format) {
+      let [w = 0, h = 0] = props.widthHeightVmins;
+      format = (w == h) ? 'square' : (w > h) ? 'horiz' : 'vert';
+    }
+
     let assetCount = props.assetCount || 1;
     let assetFormat = props.assetFormat || 'gif';
 
     this.state = {
       seed,
+      format,
       assetCount,
       assetFormat,
       lifecycle:        'loading',
-      assets:           this._buildAssetPaths(seed, props.format, assetCount, assetFormat),
-      format:           props.format,
-      key:              `${props.format}-${seed}`,
+      assets:           this._buildAssetPaths(seed, format, assetCount, assetFormat),
+      key:              `${format}-${seed}`,
       firstAssetLoaded: false,
       allAssetsLoaded:  false
     }

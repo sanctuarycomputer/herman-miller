@@ -1,20 +1,18 @@
-const MIN_BOX_DIMENSIONS_PX = 100;
-const MAX_BOX_DIMENSIONS_PX = 400;
+let highestZIndex = 0;
+
+const MIN_BOX_DIMENSIONS_PX = 75;
+const MAX_BOX_DIMENSIONS_PX = 300;
 
 const random = function(min = 0, max = 1) {
   return Math.random() * (max - min) + min;
 };
 
-const vmin = function() {
-  let bodyRect = document.body.getBoundingClientRect();
-  console.log(bodyRect);
-  let vmin = bodyRect.width < bodyRect.height ? bodyRect.width : bodyRect.height;
-  vmin /= 100;
-  return Math.round(vmin);
-};
-
 // ----------------------------------------------------------------------------
 // Drag helpers
+
+const onDragStart = function(event) {
+  event.target.style.zIndex = ++highestZIndex;
+}
 
 const onDrag = function(event) {
   let target = event.target;
@@ -46,6 +44,7 @@ const onDragEnd = function(event) {
 // Determine the interactable's starting size.
 // We use this to reset to 'real' coordinates after our scale3d resize
 const onResizeStart = function(event) {
+  event.target.style.zIndex = ++highestZIndex;
   this.startSize = parseFloat(window.getComputedStyle(event.target).getPropertyValue('width'));
   this.x = this.x || 0;
   this.y = this.y || 0;
@@ -95,4 +94,12 @@ const onResizeEnd = function(event) {
 }
 
 
-export { random, onDrag, onResize, onDragEnd, onResizeStart, onResizeEnd, vmin };
+export {
+  random,
+  onDrag,
+  onDragStart,
+  onDragEnd,
+  onResize,
+  onResizeStart,
+  onResizeEnd
+};

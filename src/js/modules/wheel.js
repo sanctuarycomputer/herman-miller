@@ -4,23 +4,41 @@ class Wheel extends Interactable {
   constructor(props) {
     super(...arguments);
     this.state['wheelLifecycle'] = 'idle';
+
+    let style = this.wheelStyle.base;
+    let [w, h] = this.props.widthHeightVmins;
+    
+    style.width = `${w}vmin`;
+    style.height = `${h}vmin`;
+    style.marginRight = `${w/10}vmin`;
+    style.marginBottom = `${h/10}vmin`;
+
+    style.position = (h === w) ? 'relative' : 'absolute';
+  }
+
+  componentDidMount() {
+    super.componentDidMount();
+    let el = React.findDOMNode(this);
+    
+    this.setState({
+      styles: {
+        position: 'absolute',
+        left: `${el.offsetLeft}px`,
+        top: `${el.offsetTop}px`
+      }
+    });
   }
 
   spinAnimation = Radium.keyframes({
-    '0%': {
-      transform: 'rotate(0deg)'
-    },
-    '100%': {
-      transform: 'rotate(360deg)'
-    }
+    '0%': {transform: 'rotate(0deg)'},
+    '100%': {transform: 'rotate(360deg)'}
   })
 
   wheelStyle = {
     base: {
-      width: '20vmin',
-      height: '20vmin',
       borderRadius: '100%',
-      position: 'absolute',
+      display: 'inline-block',
+      verticalAlign: 'top',
     },
     inner: {
       backgroundSize: 'contain',

@@ -14,7 +14,7 @@ class Lunar extends Wheel {
   }
   render() {
     return (
-      <div style={[this.wheelStyle.base]}>
+      <div style={[this.wheelStyle.base, this.state.styles]}>
         <div style={ [this.wheelStyle.inner, this.wheelStyle[this.state.wheelLifecycle]] }></div> 
         <div style={ [this.style.base] }></div>
       </div>
