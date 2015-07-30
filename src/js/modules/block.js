@@ -12,25 +12,92 @@ class Block extends Interactable {
     this.state['currentAsset'] = 1;
     this.state['blockLifecycle'] = 'idle';
     this.state['nextAsset'] = 2;
+    
+    // This could all be way nicer but we gotta ship this thing on monday
+    switch(this.state.format) {
+      case 'horiz':
+        console.log('horiz');
+        this.x = 500;
+        this.y = 371;
+        break;
+      case 'vert':
+        this.x = 500;
+        this.y = 171;
+        break;
+      default:
+        switch(this.state.seed) {
+          case 1:
+            this.x = 600;
+            this.y = 271;
+            break;
+          case 2:
+            this.x = 600;
+            this.y = 171;
+            break;
+          case 3:
+            this.x = 600;
+            this.y = 71;
+            break;
+          case 4:
+            this.x = 400;
+            this.y = 371;
+            break;
+          case 5:
+            this.x = 300;
+            this.y = 371;
+            break;
+          case 6:
+            this.x = 400;
+            this.y = 271;
+            break;
+        }
+    }
   }
 
   style = {
-    square: {
-      width: "20vmin",
-      height: "20vmin",
+    square1: {
+      width: "100px",
+      height: "100px",
+      transform: 'translate3d(600px, 271px, 0px)'
     },
-    horiz: {
-      width: "40vmin",
-      height: "20vmin",
+    square2: {
+      width: "100px",
+      height: "100px",
+      transform: 'translate3d(600px, 171px, 0px)'
     },
-    vert: {
-      width: "20vmin",
-      height: "40vmin",
+    square3: {
+      width: "100px",
+      height: "100px",
+      transform: 'translate3d(600px, 71px, 0px)'
+    },
+    square4: {
+      width: "100px",
+      height: "100px",
+      transform: 'translate3d(400px, 371px, 0px)'
+    },
+    square5: {
+      width: "100px",
+      height: "100px",
+      transform: 'translate3d(300px, 371px, 0px)'
+    },
+    square6: {
+      width: "100px",
+      height: "100px",
+      transform: 'translate3d(400px, 271px, 0px)'
+    },
+    horiz1: {
+      width: "200px",
+      height: "100px",
+      transform: 'translate3d(500px, 371px, 0px)'
+    },
+    vert1: {
+      width: "100px",
+      height: "200px",
+      transform: 'translate3d(500px, 171px, 0px)'
     },
     base: {
       position: 'absolute',
       overflow: 'hidden',
-      transform: 'translateZ(0)' // enable hardware acceleration
     },
     child: {
       width: '100%',
@@ -115,7 +182,7 @@ class Block extends Interactable {
     return (
       <div style={[
         this.style.base,
-        this.style[this.state.format]
+        this.style[`${this.state.format}${this.state.seed}`]
       ]}>
         <div className="initial" style={[
           this.style.child, 
