@@ -7,7 +7,7 @@ class Figure extends Assetable{
     this.state['facing'] = 'left';
     this.state['figureState'] = 'idle';
     this.state['figureLoop'] = '';
-    this.state['animationStart'] =  15 + (this.state.seed * 15)
+    this.state['animationStart'] =  15 + (this.props.position * 15)
 
 
     const Global = window.eamesInteractive;
@@ -21,15 +21,16 @@ class Figure extends Assetable{
     });
   }
 
+
   walkCycle = `url(${this.state.assets[0]})`;
   lookCycle = `url(${this.state.assets[1]})`;
 
   figureAnimation = Radium.keyframes({
     '0%': {
-      left: '-45%'
+      left: '-70%'
     },
     '100%': {
-      left: '145%'
+      left: '170%'
     }
   });
 
@@ -74,6 +75,8 @@ class Figure extends Assetable{
       animationIterationCount: 'infinite',
       animationPlayState: 'running',
       animationFillMode: 'backwards',
+      transition: `1s opacity ${15 + this.props.position * 15 }s`,
+      animationDelay: `${ 15 + this.props.position * 15}s`,
       backgroundImage: this.walkCycle,
       animationName: this.figureAnimation,
       animationDuration: '15s',
@@ -83,20 +86,7 @@ class Figure extends Assetable{
       WebkitBackfaceVisibility: 'hidden'
     },
 
-    1: {
-      transition: `1s opacity ${15 + (this.state.seed * 15)}s`,
-      animationDelay: `${this.state.animationStart}s`
-    },
 
-    2: {
-      transition: `1s opacity ${15 + (this.state.seed * 15)}s`,
-      animationDelay: `${this.state.animationStart}s`
-
-    },
-    3: {
-      transition: `1s opacity ${15 + (this.state.seed * 15)}s`,
-      animationDelay: `${this.state.animationStart}s`
-    },
 
     looking: {
       animationPlayState: 'paused',
@@ -117,11 +107,10 @@ class Figure extends Assetable{
   render() {
     return (
       <div style={[
-        this.style.base, 
+        this.style.base,
         this.style[this.state.facing],
         this.style[this.state.figureState],
         this.style[this.state.figureLoop],
-        this.style[this.state.seed]
       ]}></div>
     );
   }
