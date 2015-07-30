@@ -22,12 +22,12 @@ class Artboard extends React.Component {
   render() {
     return (
       <div style={[this.style.base]}>
-        <Figure seed={1} position ={1} format={'figure'} assetCount={2} />
-        <Figure seed={2} position ={2} format={'figure'} assetCount={2} />
-        <Figure seed={1} position ={3} format={'figure'} assetCount={2} />
-        <Figure seed={2} position ={4} format={'figure'} assetCount={2} />
-        <Figure seed={1} position ={5} format={'figure'} assetCount={2} />
-        <Figure seed={2} position ={6} format={'figure'} assetCount={2} />
+        <Figure seed={1} position ={1} format={'figure'} assetFormat={'png'} assetCount={2} />
+        <Figure seed={2} position ={2} format={'figure'} assetFormat={'png'} assetCount={2} />
+        <Figure seed={1} position ={3} format={'figure'} assetFormat={'png'} assetCount={2} />
+        <Figure seed={2} position ={4} format={'figure'} assetFormat={'png'} assetCount={2} />
+        <Figure seed={1} position ={5} format={'figure'} assetFormat={'png'} assetCount={2} />
+        <Figure seed={2} position ={6} format={'figure'} assetFormat={'png'} assetCount={2} />
 
 
         <Block draggable={true} resizable={true} seed={1} format={'square'} assetCount={5} />
