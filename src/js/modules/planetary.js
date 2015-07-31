@@ -6,23 +6,23 @@ class Planetary extends Wheel {
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
       position: 'absolute',
-      width: '80px',
-      height: '80px'
+      width: '40%',
+      height: '40%'
     },
     satellite1: {
       backgroundImage: `url(${this.state.assets[1]})`,
-      bottom: '30px',
-      left: '7px'
+      bottom: '15%',
+      left: '5%'
     },
     satellite2: {
       backgroundImage: `url(${this.state.assets[2]})`,
-      bottom: '30px',
-      right: '7px'
+      bottom: '15%',
+      right: '5%'
     },
     satellite3: {
       backgroundImage: `url(${this.state.assets[3]})`,
-      left: '60px',
-      top: '0px'
+      left: '31%',
+      top: '0%'
     }
   }
 
