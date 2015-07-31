@@ -46,7 +46,7 @@ class Cube extends Assetable {
     },
     visibleFace: {
       front:  { 
-        transform: "translateZ( -50vmin )" 
+        transform: "translateZ( -41vmin )" 
       },
       bottom: { 
         transform: "translateZ( -30vmin ) rotateX(   90deg )" 
@@ -70,6 +70,8 @@ class Cube extends Assetable {
         <CubeFaceOpenable face="front" 
                           assetLeft={this.state.assets[1]} 
                           assetRight={this.state.assets[2]} 
+                          assetLeftBack={this.state.assets[3]} 
+                          assetRightBack={this.state.assets[4]} 
                           isFlat={this.state.isFlat} 
                           isOpen={this.state.isFlat} />
 

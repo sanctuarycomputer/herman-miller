@@ -16,7 +16,7 @@ class Global {
   }
 
   start() {
-    React.render(<Viewport format={'loader'} />, this.element);
+    React.render(<Viewport seed={1} format={'background'} assetFormat={'jpg'} />, this.element);
   }
 
   onReady(callback) {
