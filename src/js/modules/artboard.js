@@ -1,4 +1,3 @@
-import Assetable from 'herman-miller/modules/assetable';
 import { random } from 'herman-miller/modules/utils';
 import Block from 'herman-miller/modules/block';
 import Figure from 'herman-miller/modules/figure';
@@ -7,9 +6,10 @@ import Optical from 'herman-miller/modules/optical';
 import Moire from 'herman-miller/modules/moire';
 import Lunar from 'herman-miller/modules/lunar';
 
-class Artboard extends Assetable {
+class Artboard extends React.Component {
   constructor() {
     super(...arguments);
+    this.state = {};
     this.state['artboardLifecycle'] = 'idle';
     this.state['wheelSet'] = Math.floor(random(0, 2));
     const Global = window.eamesInteractive;
@@ -28,17 +28,13 @@ class Artboard extends Assetable {
   style = {
     base: {
       width: "100%",
-      height: "471px",
+      height: "476px",
       position: 'absolute',
-      backgroundImage: `url(${this.state.assets[0]})`,
-      backgroundSize: 'cover',
-      backgroundPosition: '50% 50%',
-      opacity: 0,
       transition: "opacity 5s",
-      zIndex: '-1'
+      opacity: 0
     },
     active: {
-      opacity: 1
+      opacity: 1 
     }
   }
 

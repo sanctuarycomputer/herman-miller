@@ -18,37 +18,37 @@ class Block extends Interactable {
       case 'horiz':
         console.log('horiz');
         this.x = 500;
-        this.y = 371;
+        this.y = 376;
         break;
       case 'vert':
         this.x = 500;
-        this.y = 171;
+        this.y = 176;
         break;
       default:
         switch(this.state.seed) {
           case 1:
             this.x = 600;
-            this.y = 271;
+            this.y = 276;
             break;
           case 2:
             this.x = 600;
-            this.y = 171;
+            this.y = 176;
             break;
           case 3:
             this.x = 600;
-            this.y = 71;
+            this.y = 76;
             break;
           case 4:
             this.x = 400;
-            this.y = 371;
+            this.y = 376;
             break;
           case 5:
             this.x = 300;
-            this.y = 371;
+            this.y = 376;
             break;
           case 6:
             this.x = 400;
-            this.y = 271;
+            this.y = 276;
             break;
         }
     }
@@ -58,42 +58,42 @@ class Block extends Interactable {
     square1: {
       width: "100px",
       height: "100px",
-      transform: 'translate3d(600px, 271px, 0px)'
+      transform: 'translate3d(600px, 276px, 0px)'
     },
     square2: {
       width: "100px",
       height: "100px",
-      transform: 'translate3d(600px, 171px, 0px)'
+      transform: 'translate3d(600px, 176px, 0px)'
     },
     square3: {
       width: "100px",
       height: "100px",
-      transform: 'translate3d(600px, 71px, 0px)'
+      transform: 'translate3d(600px, 76px, 0px)'
     },
     square4: {
       width: "100px",
       height: "100px",
-      transform: 'translate3d(400px, 371px, 0px)'
+      transform: 'translate3d(400px, 376px, 0px)'
     },
     square5: {
       width: "100px",
       height: "100px",
-      transform: 'translate3d(300px, 371px, 0px)'
+      transform: 'translate3d(300px, 376px, 0px)'
     },
     square6: {
       width: "100px",
       height: "100px",
-      transform: 'translate3d(400px, 271px, 0px)'
+      transform: 'translate3d(400px, 276px, 0px)'
     },
     horiz1: {
       width: "200px",
       height: "100px",
-      transform: 'translate3d(500px, 371px, 0px)'
+      transform: 'translate3d(500px, 376px, 0px)'
     },
     vert1: {
       width: "100px",
       height: "200px",
-      transform: 'translate3d(500px, 171px, 0px)'
+      transform: 'translate3d(500px, 176px, 0px)'
     },
     base: {
       position: 'absolute',

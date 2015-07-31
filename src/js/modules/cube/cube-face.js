@@ -8,7 +8,8 @@ class CubeFace extends React.Component {
       boxSizing: "border-box"
     },
     front:  { 
-      transform: "translateZ( 30vmin )" 
+      transform: "translateZ( 30vmin )",
+      backfaceVisibility: "hidden"
     },
     bottom: { 
       transform: "translateZ( -30vmin ) rotateX( -90deg )", 
@@ -21,7 +22,8 @@ class CubeFace extends React.Component {
         transition: "transform 2s ease, opacity 0.5s ease-out" 
       },
       front:  { 
-        transform: "translateZ( 0vmin )" 
+        transform: "translateZ( 0vmin )",
+        backfaceVisibility: "hidden"
       },
       bottom: { 
         transform: "translateZ( -30vmin ) rotateX( -182deg )", 
