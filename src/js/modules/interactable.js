@@ -1,5 +1,5 @@
 import Assetable from 'herman-miller/modules/assetable';
-import { onDrag, onDragEnd, onResize, onResizeStart, onResizeEnd } from 'herman-miller/modules/utils';
+import { onDrag, onDragEnd, onResize, onResizeEnd } from 'herman-miller/modules/utils';
 
 const {
   findDOMNode
@@ -51,9 +51,8 @@ class Interactable extends Assetable {
         restriction: "parent",
         square: false, // keep 1:1 aspect ratio
         endOnly: false, // element always stays within the bounds
-        edges: { top: false, left: false, right: true, bottom: true }
+        edges: { top: '.handle', left: '.handle', right: '.handle', bottom: '.handle' }
       })
-      .on('resizestart', onResizeStart.bind(this))
       .on('resizemove', onResize.bind(this))
       .on('resizeend', onResizeEnd.bind(this));
     }
