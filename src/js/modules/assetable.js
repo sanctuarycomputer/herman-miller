@@ -52,6 +52,12 @@ class Assetable extends Component {
       allAssetsLoaded:  false
     }
 
+    let uniqueKey = Global.registry.filter(item => { return item.key === this.state.key }).length === 0 ? true : false;
+
+    if (!uniqueKey) {
+      this.state.key = `${this.state.key}-${Date.now()}`;
+    }
+
     Global.addComponentToRegistry(this.state.key);
     Global.onReady(() => {
       this.setState({ lifecycle: 'ready' });

@@ -68,6 +68,12 @@ class Global {
     this._checkIfReady();
   }
 
+  getSolidObjects(excludedKey) {
+    return this.registry.filter(function(item) { 
+      return (item.solid && (item.key !== excludedKey));
+    });
+  }
+
   _checkIfReady() {
     this.ready = this.registry
                      .map(item => { return item.firstAssetLoaded })
