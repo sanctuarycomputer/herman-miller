@@ -7,6 +7,7 @@ class Figure extends Assetable{
     this.state['facing'] = 'left';
     this.state['figureState'] = 'idle';
     this.state['figureLoop'] = '';
+    this.state['animationLoop'] = '';
     this.state['animationStart'] =  15 + (this.props.position * 15)
 
 
@@ -27,22 +28,35 @@ class Figure extends Assetable{
 
   figureAnimation = Radium.keyframes({
     '0%': {
-      left: '-40%'
+      left: '0'
     },
     '100%': {
-      left: '140%'
+      left: '980px'
     }
   });
 
-  figureSprite = Radium.keyframes({
+  lookAnimation = Radium.keyframes({
+    '0%': {
+      backgroundPosition: "0px"
+    },
     '100%': {
-      backgroundPosition: "-16875px"
+      backgroundPosition: "-16850px"
+    }
+  });
+
+  walkAnimation = Radium.keyframes({
+    '0%': {
+      backgroundPosition: "0px"
+    },
+    '100%': {
+      backgroundPosition: "-2875px"
     }
   });
 
   startLooking = () => {
     this.setState({
-      figureLoop: 'looking'
+      figureLoop: 'looking',
+      animationLoop: 'lookingAnimation'
     });
     let lookLength = random(5000, 9000);
     window.setTimeout(this.stopLooking, lookLength);
@@ -50,16 +64,19 @@ class Figure extends Assetable{
 
   stopLooking = () => {
     this.setState({
-      figureLoop: 'walking'
+      figureLoop: 'walking',
+      animationLoop: 'walkingAnimation'
     });
     let walkLength = random(6000, 10000);
     window.setTimeout(this.startLooking, walkLength);
   }
 
-  changeDirection = () => {
-    this.setState({
-      facing: this.state.facing === 'left' ? 'right' : 'left'
-    });
+  changeDirection = (event) => {
+    if(event.path.length === 8){
+      this.setState({
+        facing: this.state.facing === 'left' ? 'right' : 'left'
+      });
+    }
   };
 
   componentDidMount() {
@@ -69,7 +86,7 @@ class Figure extends Assetable{
 
   style = {
     base: {
-      width: '160px',
+      width: '125px',
       height: '160px',
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
@@ -81,18 +98,24 @@ class Figure extends Assetable{
       animationIterationCount: 'infinite',
       animationPlayState: 'running',
       animationFillMode: 'backwards',
-      transition: `1s opacity ${15 + this.props.position * 15 }s`,
-      animationDelay: `${ 15 + this.props.position * 15}s`,
+      transition: `1s opacity ${0 + this.props.position * 15 }s`,
+      animationDelay: `${ 0 + this.props.position * 15}s`,
       animationName: this.figureAnimation,
+      animationDirection: 'alternate-reverse',
       animationDuration: '15s',
-      animationTimingFunction: 'linear',
-      animationDirection: 'alternate-reverse'
+      animationTimingFunction: 'linear'
     },
-
-    background: {
-      animation: `${this.figureSprite} 10s steps(135)`,
+    lookingAnimation: {
+      animation: `${this.lookAnimation} 10s steps(135) infinite`,
       background: `${this.lookCycle} left center`,
-      height: '100%'
+      width: '125px',
+      height: '160px'
+    },
+    walkingAnimation: {
+      animation: `${this.walkAnimation} 1.35s steps(23) infinite`,
+      background: `${this.walkCycle} left center`,
+      width: '125px',
+      height: '160px'
     },
 
     looking: {
@@ -118,7 +141,8 @@ class Figure extends Assetable{
           this.style[this.state.figureState],
           this.style[this.state.figureLoop],
         ]}>
-          <div style={[this.style.background]}></div>
+
+          <div style={[this.style[this.state.animationLoop]]}></div>
         </div>
     );
   }
