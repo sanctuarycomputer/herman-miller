@@ -28,10 +28,11 @@ class Figure extends Assetable{
 
   figureAnimation = Radium.keyframes({
     '0%': {
-      left: '0'
+      left: '-250px'
     },
+
     '100%': {
-      left: '980px'
+      left: '1100px'
     }
   });
 
@@ -58,7 +59,7 @@ class Figure extends Assetable{
       figureLoop: 'looking',
       animationLoop: 'lookingAnimation'
     });
-    let lookLength = random(5000, 9000);
+    let lookLength = random(4000, 12000);
     window.setTimeout(this.stopLooking, lookLength);
   }
 
@@ -67,7 +68,7 @@ class Figure extends Assetable{
       figureLoop: 'walking',
       animationLoop: 'walkingAnimation'
     });
-    let walkLength = random(6000, 10000);
+    let walkLength = random(8000, 13000);
     window.setTimeout(this.startLooking, walkLength);
   }
 
@@ -98,8 +99,8 @@ class Figure extends Assetable{
       animationIterationCount: 'infinite',
       animationPlayState: 'running',
       animationFillMode: 'backwards',
-      transition: `1s opacity ${0 + this.props.position * 15 }s`,
-      animationDelay: `${ 0 + this.props.position * 15}s`,
+      transition: `1s opacity ${27 + this.props.position * 15 }s`,
+      animationDelay: `${27 + this.props.position * 15}s`,
       animationName: this.figureAnimation,
       animationDirection: 'alternate-reverse',
       animationDuration: '15s',
