@@ -1,5 +1,5 @@
 import Assetable from 'herman-miller/modules/assetable';
-import { onDrag, onDragEnd, onResize, onResizeEnd } from 'herman-miller/modules/utils';
+import { onDrag, onDragEnd, onResizeStart, onResize, onResizeEnd } from 'herman-miller/modules/utils';
 
 const {
   findDOMNode
@@ -53,6 +53,7 @@ class Interactable extends Assetable {
         endOnly: false, // element always stays within the bounds
         edges: { top: '.handle', left: '.handle', right: '.handle', bottom: '.handle' }
       })
+      .on('resizestart', onResizeStart.bind(this))
       .on('resizemove', onResize.bind(this))
       .on('resizeend', onResizeEnd.bind(this));
     }

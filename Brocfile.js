@@ -31,7 +31,8 @@ var npmComponents = [
   'react/dist/react.js',
   'radium/dist/radium.js',
   'interact.js/interact.js',
-  'rsvp/dist/rsvp.js'
+  'rsvp/dist/rsvp.js',
+  'dynamics.js/lib/dynamics.js'
 ]
 
 /* Load Vendor Libs Js */

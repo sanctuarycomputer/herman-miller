@@ -114,6 +114,7 @@ class Block extends Interactable {
     base: {
       position: 'absolute',
       overflow: 'hidden',
+      cursor: 'pointer'
     },
     child: {
       width: '100%',
@@ -129,14 +130,14 @@ class Block extends Interactable {
     },
     activeInitialChild: {
       transform: 'translateX(-100%)',
-      transition: '1s all'
+      transition: '0.5s all'
     },
     idleOffsetChild: {
       transform: 'translateX(100%)'
     },
     activeOffsetChild: {
       transform: 'translateX(0%)',
-      transition: '1s all'
+      transition: '0.5s all'
     },
     1: {
       backgroundImage: `url(${this.state.assets[0]})` 

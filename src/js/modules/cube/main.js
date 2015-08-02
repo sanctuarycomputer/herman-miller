@@ -16,7 +16,7 @@ class Cube extends Assetable {
   handleClick = () => {
     if (this.state.visibleFace !== "front") {
       this.setState({ visibleFace: "front" });
-      setTimeout(this.flattenBox, 3200);
+      setTimeout(this.flattenBox, 1500);
     }
   }
   
@@ -39,7 +39,7 @@ class Cube extends Assetable {
       transformStyle: "preserve-3d",
       zIndex: '1',
       transform: "translateZ( -120vmin ) translateY(130px) rotateX( 90deg )", // initial perspective
-      transition: "transform 3.5s, opacity 2.5s 2.5s",
+      transition: "transform 1.6s, opacity 0.8s 0.8s",
     },
     visible: {
       opacity: 1 
@@ -49,7 +49,7 @@ class Cube extends Assetable {
         transform: "translateZ( -41vmin )" 
       },
       bottom: { 
-        transform: "translateZ( -30vmin ) rotateX(   90deg )" 
+        transform: "translateZ( -30vmin ) rotateX( 90deg )" 
       }
     },
     flattened : {
