@@ -21,10 +21,9 @@ class CubeFaceOpenable extends CubeFace {
     backgroundSize: 'cover'
   }
 
-  leftStyles() {
+  leftStyles(isBackface) {
     let style = {
       left: "0",
-      backgroundImage: `url(${this.props.assetLeft})`
     }
 
     if (this.props.isOpen) {
@@ -32,19 +31,36 @@ class CubeFaceOpenable extends CubeFace {
       style.transformOrigin = "left";
       style.opacity = 0;
     }
+
+    if (isBackface) {
+      style.backfaceVisibility = "visible";
+      style.backgroundImage = `url(${this.props.assetLeftBack})`;
+    } else {
+      style.backfaceVisibility = "hidden";
+      style.zIndex = 10;
+      style.backgroundImage = `url(${this.props.assetLeft})`;
+    }
     return style;
   }
 
-  rightStyles() {
+  rightStyles(isBackface) {
     let style = {
-      right: "0",
-      backgroundImage: `url(${this.props.assetRight})`
+      right: "0"
     }
 
     if (this.props.isOpen) {
       style.transform = "rotateY(150deg)";
       style.transformOrigin = "right";
       style.opacity = 0;
+    }
+    
+    if (isBackface) {
+      style.backfaceVisibility = "visible";
+      style.backgroundImage = `url(${this.props.assetRightBack})`;
+    } else {
+      style.backfaceVisibility = "hidden";
+      style.zIndex = 10;
+      style.backgroundImage = `url(${this.props.assetRight})`;
     }
     return style;
   }
@@ -54,7 +70,9 @@ class CubeFaceOpenable extends CubeFace {
     return (
       <div style={this.combinedStyles().concat(this.style.isOpen())}>
         <div style={[this.extendedStyle, this.leftStyles()]}></div>
+        <div style={[this.extendedStyle, this.leftStyles(true)]}></div>
         <div style={[this.extendedStyle, this.rightStyles()]}></div>
+        <div style={[this.extendedStyle, this.rightStyles(true)]}></div>
       </div>
     );
   }

@@ -16,7 +16,7 @@ class Global {
   }
 
   start() {
-    React.render(<Viewport format={'background'} assetFormat={'jpg'} />, this.element);
+    React.render(<Viewport seed={1} format={'background'} assetFormat={'jpg'} />, this.element);
   }
 
   onReady(callback) {
@@ -66,6 +66,12 @@ class Global {
     }
 
     this._checkIfReady();
+  }
+
+  getSolidObjects(excludedKey) {
+    return this.registry.filter(function(item) { 
+      return (item.solid && (item.key !== excludedKey));
+    });
   }
 
   _checkIfReady() {

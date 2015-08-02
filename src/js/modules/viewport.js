@@ -1,46 +1,53 @@
 import Assetable from 'herman-miller/modules/assetable';
+import Spinner from 'herman-miller/modules/spinner';
+import Artboard from 'herman-miller/modules/artboard';
 import Cube from 'herman-miller/modules/cube/main';
 
 class Viewport extends Assetable {
   constructor() {
     super(...arguments);
-    this.state['boxLifecycle'] = 'idle';
+    this.state['viewportLifecycle'] = 'idle';
+    
     const Global = window.eamesInteractive;
     Global.onBoxOpen(() => {
       this.setState({
-        boxLifecycle: 'active'
+        viewportLifecycle: 'active'
       })
     });
   }
+
   style = {
     base: {
-      width: "100%",
-      height: "100%",
+      width: '980px',
+      height: '551px',
       perspective: "1750px",
       position: "relative",
-      backgroundColor: 'rgb(191, 182, 195)',
+      backgroundColor: 'rgb(147, 144, 144)',
+      overflow: 'hidden',
     },
     background: {
-      backgroundImage: `url(${this.state.assets[0]})`,
       width: '100%',
       height: '100%',
+      position: 'absolute',
+      backgroundImage: `url(${this.state.assets[0]})`,
       backgroundSize: 'cover',
       backgroundPosition: '50% 50%',
       opacity: 0,
       transition: "opacity 5s",
-      zIndex: '-1',
-      pointerEvents: 'none'
+      zIndex: '-1'
     },
     active: {
-      opacity: 1
+      opacity: 1 
     }
   }
 
   render() {
     return (
       <div style={[this.style.base]}>
-        <Cube seed={1} format={'box'} assetCount={3} assetFormat={'jpg'} />
-        <div style={ [this.style.background, this.style[this.state.boxLifecycle]]  } />
+        <Spinner seed={1} format={'spinner'} />
+        <Cube seed={1} format={'box'} assetCount={5} assetFormat={'jpg'} />
+        <Artboard />
+        <div style={[this.style.background, this.style[this.state.viewportLifecycle]]} />
       </div>
     );
   }

@@ -3,6 +3,7 @@ class Loader {
     this.stack = {
       0: []
     };
+    this.promiseCache = {};
   }
 
   loadPaths(pathArray) {
@@ -15,19 +16,28 @@ class Loader {
       if (!this.stack[i]) {
         this.stack[i] = []
       }
+      
+      let promise;
+      if (this.promiseCache[pathArray[i]]) {
+        promise = this.promiseCache[pathArray[i]];
+        hash.firstAssetLoaded = promise;
+        hash.allAssetsLoaded.push(promise);
+      } else {
+        promise = this._loadPath(pathArray[i]);
 
-      let promise = this._loadPath(pathArray[i]);
+        if (i === 0) {
+          hash.firstAssetLoaded = promise; 
+        }
 
-      if (i === 0) {
-        hash.firstAssetLoaded = promise; 
+        promise.then((image) => {
+          this._removePromiseFromStack(promise, i);
+        });
+
+        hash.allAssetsLoaded.push(promise);
+
+        this.stack[i].push(promise);
+        this.promiseCache[pathArray[i]] = promise;
       }
-
-      promise.then((image) => {
-        this._removePromiseFromStack(promise, i);
-      });
-
-      hash.allAssetsLoaded.push(promise);
-      this.stack[i].push(promise);
     }
 
     hash.allAssetsLoaded = RSVP.all(hash.allAssetsLoaded);
@@ -44,6 +54,7 @@ class Loader {
         reject(`Asset: ${path} did not load.`);
       }
       image.src = path;
+
       if (image.complete) {
         resolve(image);
       }

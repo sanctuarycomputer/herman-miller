@@ -27,10 +27,10 @@ class Figure extends Assetable{
 
   figureAnimation = Radium.keyframes({
     '0%': {
-      left: '-70%'
+      left: '-40%'
     },
     '100%': {
-      left: '170%'
+      left: '140%'
     }
   });
 
