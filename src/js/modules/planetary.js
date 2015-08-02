@@ -1,4 +1,5 @@
 import Wheel from 'herman-miller/modules/wheel';
+import Handle from 'herman-miller/modules/handle';
 
 class Planetary extends Wheel {
   style = {
@@ -21,7 +22,7 @@ class Planetary extends Wheel {
     },
     satellite3: {
       backgroundImage: `url(${this.state.assets[3]})`,
-      left: '31%',
+      left: '30%',
       top: '0%'
     }
   }
@@ -34,6 +35,7 @@ class Planetary extends Wheel {
           <div style={ [this.style.satellite, this.style.satellite2, this.wheelStyle[this.state.wheelLifecycle]] }></div>
           <div style={ [this.style.satellite, this.style.satellite3, this.wheelStyle[this.state.wheelLifecycle]] }></div>
         </div> 
+        <Handle format={'handle'} assetFormat={'png'} />
       </div>
     );
   }

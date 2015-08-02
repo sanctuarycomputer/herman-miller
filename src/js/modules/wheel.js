@@ -1,10 +1,17 @@
 import Interactable from 'herman-miller/modules/interactable';
 
+const {
+  findDOMNode
+} = React;
+
 class Wheel extends Interactable {
   constructor(props) {
     super(...arguments);
-    this.state['wheelLifecycle'] = 'idle';
+    this.state['wheelLifecycle'] = 'active';
     this.state['wheelIndex'] = props.wheelIndex;
+
+    this.width = 100;
+    this.height = 100;
     switch(this.props.wheelIndex) {
       case 1:
         this.x = 300;
@@ -33,6 +40,7 @@ class Wheel extends Interactable {
   wheelStyle = {
     base: {
       width: '100px',
+      cursor: 'pointer',
       height: '100px',
       borderRadius: '100%',
       position: 'absolute'
@@ -54,6 +62,9 @@ class Wheel extends Interactable {
       width: '100%',
       height: '100%',
       backgroundImage: `url(${this.state.assets[0]})`,
+    },
+    idle: {
+      transform: 'rotate(0deg)'
     },
     active: {
       animationName: this.spinAnimation,

@@ -42,15 +42,15 @@ class Artboard extends React.Component {
     let wheels;
     if (this.state.wheelSet === 1) {
       wheels = [
-        <Planetary draggable={true} resizable={false} seed={1} format={'wheel'} assetFormat={'png'} assetCount={4} wheelIndex={1} />,
-        <Moire draggable={true} resizable={false} seed={3} format={'wheel'} assetFormat={'png'} assetCount={2} wheelIndex={2} />,
-        <Optical draggable={true} resizable={false} seed={5} format={'wheel'} assetFormat={'png'} wheelIndex={3} />
+        <Planetary draggable={true} resizable={true} seed={1} format={'wheel'} assetFormat={'png'} assetCount={4} wheelIndex={1} />,
+        <Moire draggable={true} resizable={true} seed={3} format={'wheel'} assetFormat={'png'} assetCount={2} wheelIndex={2} />,
+        <Optical draggable={true} resizable={true} seed={5} format={'wheel'} assetFormat={'png'} wheelIndex={3} />
       ];
     } else {
       wheels = [
-        <Planetary draggable={true} resizable={false} seed={2} format={'wheel'} assetFormat={'png'} assetCount={4} wheelIndex={1}/>,
-        <Lunar draggable={true} resizable={false} seed={4} format={'wheel'} assetFormat={'png'} assetCount={2} wheelIndex={2}/>,
-        <Optical draggable={true} resizable={false} seed={6} format={'wheel'} assetFormat={'png'} wheelIndex={3}/>
+        <Planetary draggable={true} resizable={true} seed={2} format={'wheel'} assetFormat={'png'} assetCount={4} wheelIndex={1}/>,
+        <Lunar draggable={true} resizable={true} seed={4} format={'wheel'} assetFormat={'png'} assetCount={2} wheelIndex={2}/>,
+        <Optical draggable={true} resizable={true} seed={6} format={'wheel'} assetFormat={'png'} wheelIndex={3}/>
       ];
     }
 

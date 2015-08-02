@@ -104,7 +104,8 @@ class Figure extends Assetable{
       animationName: this.figureAnimation,
       animationDirection: 'alternate-reverse',
       animationDuration: '15s',
-      animationTimingFunction: 'linear'
+      animationTimingFunction: 'linear',
+      pointerEvents: 'none'
     },
     lookingAnimation: {
       animation: `${this.lookAnimation} 10s steps(135) infinite`,
