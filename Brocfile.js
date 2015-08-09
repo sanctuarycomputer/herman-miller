@@ -32,11 +32,8 @@ var npmComponents = [
   'radium/dist/radium.js',
   'interact.js/interact.js',
   'rsvp/dist/rsvp.js',
-<<<<<<< HEAD
   'howler/howler.js'
-=======
   'dynamics.js/lib/dynamics.js'
->>>>>>> master
 ]
 
 /* Load Vendor Libs Js */
