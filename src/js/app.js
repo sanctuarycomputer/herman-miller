@@ -1,5 +1,6 @@
 import Global from 'herman-miller/modules/global';
-import Audio from 'herman-miller/modules/audio';
+import Sound from 'herman-miller/modules/sound';
 
 window.eamesInteractive = new Global(document.getElementById('herman-miller-interactive-experience'));
+window.Sound = new Sound();
 window.eamesInteractive.start();

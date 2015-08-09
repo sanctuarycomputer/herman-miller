@@ -1,5 +1,6 @@
 import Handle from 'herman-miller/modules/handle';
 import Interactable from 'herman-miller/modules/interactable';
+import { random } from 'herman-miller/modules/utils';
 
 const {
   findDOMNode
@@ -166,6 +167,10 @@ class Block extends Interactable {
       element.addEventListener("webkitTransitionEnd", this.didFinishAnimating.bind(this, element), true);
       element.addEventListener("transitionend", this.didFinishAnimating.bind(this, element), true);
       element.addEventListener("otransitionend", this.didFinishAnimating.bind(this, element), true);
+
+      const Sound = window.Sound;
+      let index = Math.round(random(1, 10));
+      Sound.single[index].play();
 
       this.setState({
         blockLifecycle: 'active'

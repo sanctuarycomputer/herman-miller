@@ -92,10 +92,14 @@ const onDrag = function(event) {
 
 const onDragEnd = function(event) {
   const Global = window.eamesInteractive;
+  const Sound = window.Sound;
+  let index = randomWhole(1, 10);
+  Sound.snare[index].play();
   Global.setRegistryState(this.state.key, {
     x: this.x,
     y: this.y
   });
+
 }
 
 // ----------------------------------------------------------------------------
@@ -129,12 +133,16 @@ const onResize = function(event) {
 
 const onResizeEnd = function(event) {
   const Global = window.eamesInteractive;
+  const Sound = window.Sound;
+  let index = randomWhole(1, 10);
+  Sound.toms[index].play();
   Global.setRegistryState(this.state.key, {
     x: this.x,
     y: this.y,
     width: this.width,
     height: this.height
   });
+
 }
 
 

@@ -35,9 +35,10 @@ class Global {
 
   boxWillOpen() {
     let background = new Howl(
-      {urls: ['/assets/sound/main_loop.mp3']},
-      {loop: true}
-      )
+      {urls: ['/assets/sound/main_loop.mp3'],
+      buffer: true,
+      loop: true})
+
     background.play()
     this.boxOpenStack.map(callback => {
       callback();
