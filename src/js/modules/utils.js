@@ -5,12 +5,15 @@ const random = function(min, max) {
   return Math.random() * (max - min) + min;
 }
 
+const randomWhole = function(min, max){
+  return Math.round(random(min, max))
+}
 // ----------------------------------------------------------------------------
 // Drag helpers
 //
 
 const collisionsFor = function(mode, objects) {
-  return objects.filter(item => { 
+  return objects.filter(item => {
     let draggableRange,
         itemRange;
     if (mode === 'x') {
@@ -25,13 +28,13 @@ const collisionsFor = function(mode, objects) {
       if (draggableRange[0] < itemRange[1]) {
         return true;
       } else {
-        return false; 
+        return false;
       }
     } else {
       if (draggableRange[1] > itemRange[0]) {
         return true;
       } else {
-        return false; 
+        return false;
       }
     }
   });
@@ -77,7 +80,7 @@ const handleSolidDragAxis = function(delta, axis) {
 const onDrag = function(event) {
   this.x = (this.x || 0);
   this.y = (this.y || 0);
- 
+
   if (this.solid) {
     handleSolidDragAxis.apply(this, [event.dy, 'y']);
     handleSolidDragAxis.apply(this, [event.dx, 'x']);
@@ -96,10 +99,14 @@ const onDrag = function(event) {
 
 const onDragEnd = function(event) {
   const Global = window.eamesInteractive;
+  const Sound = window.eamesInteractive.Sound;
+  let index = randomWhole(1, 10);
+  Sound.snare[index].play();
   Global.setRegistryState(this.state.key, {
     x: this.x,
     y: this.y
   });
+
 }
 
 // ----------------------------------------------------------------------------
@@ -124,7 +131,7 @@ const onResize = function(event) {
 
   this.width  += factor * this.aspect;
   this.height += factor;
-  
+
   this.x += (-1 * factor * this.aspect);
   this.y += (-1 * factor);
 
@@ -140,16 +147,16 @@ const onResize = function(event) {
 const maxExpansionForResize = function(axis) {
   let metric = axis === 'x' ? 'width' : 'height';
   let solids = eamesInteractive.getSolidObjects(this.state.key);
-  
+
   let relevantObjects = solids.filter(item => { return item[axis] < this[`${axis}Initial`] })
                               .filter(item => { return (item[axis] + item[metric]) > this[axis] })
- 
+
   let collisions = collisionsFor.apply(this, [axis, relevantObjects]);
-  
+
   if (collisions.length) {
     return Math.max.apply(Math, collisions.map(item => { return item[axis] + item[metric] }) );
   } else {
-    return 0; 
+    return 0;
   }
 }
 
@@ -160,7 +167,7 @@ const onResizeEnd = function(event) {
   if (this.solid) {
     let maxX = maxExpansionForResize.apply(this, ['x']);
     let maxY = maxExpansionForResize.apply(this, ['y']);
-    
+
     let reductionRatioX = 1;
     let reductionRatioY = 1;
     if (maxX > 0)  {
@@ -178,7 +185,7 @@ const onResizeEnd = function(event) {
     let reductionRatio = Math.min.apply(Math, [reductionRatioX, reductionRatioY]);
 
     if (reductionRatio < 1) {
-      reductionRatio = 1 - reductionRatio; 
+      reductionRatio = 1 - reductionRatio;
     }
 
     this.x      = this.x + (this.width - (this.width * reductionRatio));
@@ -187,7 +194,7 @@ const onResizeEnd = function(event) {
     this.height = this.height * reductionRatio;
 
     let node = React.findDOMNode(this);
-    
+
     dynamics.animate(node, {
       translateX: this.x,
       translateY: this.y,
@@ -200,15 +207,19 @@ const onResizeEnd = function(event) {
       duration: 400
     })
   }
-  
+
   const Global = window.eamesInteractive;
+  const Sound = window.eamesInteractive.Sound;
+  let index = randomWhole(1, 10);
+  Sound.toms[index].play();
   Global.setRegistryState(this.state.key, {
     x: this.x,
     y: this.y,
     width: this.width,
     height: this.height
   });
-  
+
+
   this.xInitial      = null;
   this.yInitial      = null;
   this.initialWidth  = null;

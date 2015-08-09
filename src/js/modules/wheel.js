@@ -1,4 +1,5 @@
 import Interactable from 'herman-miller/modules/interactable';
+import { random } from 'herman-miller/modules/utils';
 
 const {
   findDOMNode
@@ -77,6 +78,10 @@ class Wheel extends Interactable {
   }
 
   onClick() {
+    const Sound = window.eamesInteractive.Sound;
+    let index = Math.round(random(1, 10));
+    Sound.single[index].play();
+
     this.setState({
       wheelLifecycle: this.state.wheelLifecycle === 'idle' ? 'active' : 'idle'
     })
