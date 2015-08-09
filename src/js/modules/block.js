@@ -169,7 +169,7 @@ class Block extends Interactable {
       element.addEventListener("transitionend", this.didFinishAnimating.bind(this, element), true);
       element.addEventListener("otransitionend", this.didFinishAnimating.bind(this, element), true);
 
-      const Sound = window.Sound;
+      const Sound = window.eamesInteractive.Sound;
       let index = Math.round(random(1, 10));
       Sound.single[index].play();
 

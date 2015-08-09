@@ -99,7 +99,7 @@ const onDrag = function(event) {
 
 const onDragEnd = function(event) {
   const Global = window.eamesInteractive;
-  const Sound = window.Sound;
+  const Sound = window.eamesInteractive.Sound;
   let index = randomWhole(1, 10);
   Sound.snare[index].play();
   Global.setRegistryState(this.state.key, {
@@ -209,7 +209,7 @@ const onResizeEnd = function(event) {
   }
 
   const Global = window.eamesInteractive;
-  const Sound = window.Sound;
+  const Sound = window.eamesInteractive.Sound;
   let index = randomWhole(1, 10);
   Sound.toms[index].play();
   Global.setRegistryState(this.state.key, {
