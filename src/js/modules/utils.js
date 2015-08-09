@@ -5,6 +5,9 @@ const random = function(min, max) {
   return Math.random() * (max - min) + min;
 }
 
+const randomWhole = function(min, max){
+  return Math.round(random(min, max))
+}
 // ----------------------------------------------------------------------------
 // Drag helpers
 //
