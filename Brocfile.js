@@ -32,6 +32,7 @@ var npmComponents = [
   'radium/dist/radium.js',
   'interact.js/interact.js',
   'rsvp/dist/rsvp.js',
+  'howler/howler.js'
   'dynamics.js/lib/dynamics.js'
 ]
 
