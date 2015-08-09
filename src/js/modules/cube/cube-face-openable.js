@@ -17,7 +17,7 @@ class CubeFaceOpenable extends CubeFace {
     position: "absolute",
     top: "0",
     bottom: "0",
-    transition: "transform 4s, opacity 2.5s ease-in-out 1.5s",
+    transition: "transform 1.8s, opacity 1.2s ease-in-out 1.5s",
     backgroundSize: 'cover'
   }
 

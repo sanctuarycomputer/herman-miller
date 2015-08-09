@@ -20,7 +20,7 @@ class Spinner extends Assetable {
       backgroundSize: '50px',
       opacity: 1,
       pointerEvents: 'none',
-      transition: "opacity 2.5s",
+      transition: "opacity 0.8s",
       position: 'absolute'
     },
     finishedLoading: {

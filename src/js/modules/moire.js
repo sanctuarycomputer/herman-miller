@@ -1,6 +1,11 @@
 import Wheel from 'herman-miller/modules/wheel';
+import Handle from 'herman-miller/modules/handle';
 
 class Moire extends Wheel {
+  constructor() {
+    super(...arguments);
+    this.wheelStyle.active.animationDuration = '6.25s';
+  }
   style = {
     base: {
       backgroundSize: 'contain',
@@ -17,6 +22,7 @@ class Moire extends Wheel {
       <div style={[this.wheelStyle.base, this.wheelStyle[`wheel${this.state.wheelIndex}`]]}>
         <div style={ [this.wheelStyle.inner, this.wheelStyle[this.state.wheelLifecycle]] }></div> 
         <div style={ [this.style.base] }></div>
+        <Handle format={'handle'} assetFormat={'png'} />
       </div>
     );
   }
