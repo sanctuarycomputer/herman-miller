@@ -4,11 +4,11 @@ import { random } from 'herman-miller/modules/utils';
 class Figure extends Assetable{
   constructor(props) {
     super(...arguments)
-    this.state['facing'] = 'left';
+    this.state['facing'] = 'right';
     this.state['figureState'] = 'idle';
     this.state['figureLoop'] = '';
     this.state['animationLoop'] = '';
-    this.state['animationStart'] =  15 + (this.props.position * 15)
+    this.state['animationStart'] =  10 + (this.props.position * 15)
 
 
     const Global = window.eamesInteractive;
@@ -28,11 +28,11 @@ class Figure extends Assetable{
 
   figureAnimation = Radium.keyframes({
     '0%': {
-      left: '-250px'
+      left: '-350px'
     },
 
     '100%': {
-      left: '1100px'
+      left: '1200px'
     }
   });
 
@@ -99,11 +99,11 @@ class Figure extends Assetable{
       animationIterationCount: 'infinite',
       animationPlayState: 'running',
       animationFillMode: 'backwards',
-      transition: `1s opacity ${27 + this.props.position * 15 }s`,
-      animationDelay: `${27 + this.props.position * 15}s`,
+      transition: `1s opacity ${15 + this.props.position * 15 }s`,
+      animationDelay: `${15 + this.props.position * 15}s`,
       animationName: this.figureAnimation,
-      animationDirection: 'alternate-reverse',
-      animationDuration: '15s',
+      animationDirection: 'alternate',
+      animationDuration: '19s',
       animationTimingFunction: 'linear',
       pointerEvents: 'none'
     },
