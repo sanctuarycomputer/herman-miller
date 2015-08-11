@@ -19,6 +19,13 @@ class Global {
     React.render(<Viewport seed={1} format={'background'} assetFormat={'jpg'} />, this.element);
   }
 
+  screenshot() {
+    html2canvas(this.element, { width: 980, height: 551}).then(function(canvas) {
+      let blob = canvas.toDataURL('image/jpeg', 1);
+      download(blob, "Herman-Miller-Screengrab.jpg", "image/jpeg");
+    });
+  }
+
   onReady(callback) {
     this.readyStack.push(callback);
   }

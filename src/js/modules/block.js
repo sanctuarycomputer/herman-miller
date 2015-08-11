@@ -134,11 +134,13 @@ class Block extends Interactable {
       transition: '0.5s all'
     },
     idleOffsetChild: {
-      transform: 'translateX(100%)'
+      transform: 'translateX(100%)',
+      opacity: 0
     },
     activeOffsetChild: {
       transform: 'translateX(0%)',
-      transition: '0.5s all'
+      transition: '0.5s all',
+      opacity: 1
     },
     1: {
       backgroundImage: `url(${this.state.assets[0]})` 
