@@ -69,6 +69,15 @@ class Block extends Interactable {
       height: this.height,
       solid: true
     });
+
+    if (this.state.format === "horiz") {
+      const Global = window.eamesInteractive;
+      Global.onBoxOpen(() => {
+        setTimeout(() => {
+          this.onClick(); 
+        }, 2800);
+      });
+    }
   }
 
   style = {
@@ -115,29 +124,31 @@ class Block extends Interactable {
     base: {
       position: 'absolute',
       overflow: 'hidden',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      backfaceVisibilty: 'hidden'
     },
     child: {
       width: '100%',
       height: '100%',
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
+      backfaceVisibilty: 'hidden',
       position: 'absolute',
       top: '0px',
       left: '0px'
     },
     idleInitialChild: {
-      transform: 'translateX(0%)'
+      transform: 'translateX(0%) translateZ(0px)'
     },
     activeInitialChild: {
-      transform: 'translateX(-100%)',
+      transform: 'translateX(-100%) translateZ(0px)',
       transition: '0.5s all'
     },
     idleOffsetChild: {
-      transform: 'translateX(100%)'
+      transform: 'translateX(100%) translateZ(0px)'
     },
     activeOffsetChild: {
-      transform: 'translateX(0%)',
+      transform: 'translateX(0%) translateZ(0px)',
       transition: '0.5s all'
     },
     1: {

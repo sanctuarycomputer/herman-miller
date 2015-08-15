@@ -28,17 +28,15 @@ class Cube extends Assetable {
 
   style = {
     cube: {
+      cursor: 'pointer',
       opacity: 0,
-      top: "50%",
-      left: "50%",
-      marginLeft: "-30%",
-      marginTop: "-30%",
-      width: "60%",
-      height: "60%",
+      width: '588px',
+      height: '588px',
+      margin: "-18.5px 196px 0px 196px",
       position: "absolute",
       transformStyle: "preserve-3d",
       zIndex: '1',
-      transform: "translateZ( -120vmin ) translateY(130px) rotateX( 90deg )", // initial perspective
+      transform: "translateZ( -120vmin ) translateY( 0px ) rotateX( 90deg )", // initial perspective
       transition: "transform 1.6s, opacity 0.8s 0.8s",
     },
     visible: {
@@ -46,7 +44,7 @@ class Cube extends Assetable {
     },
     visibleFace: {
       front:  { 
-        transform: "translateZ( -41vmin )" 
+        transform: "translateZ( -41vmin ) translateY( 0px )" 
       },
       bottom: { 
         transform: "translateZ( -30vmin ) rotateX( 90deg )" 
@@ -54,7 +52,7 @@ class Cube extends Assetable {
     },
     flattened : {
       pointerEvents: 'none',
-      transform: "translateZ(42vmin) translateY(0vmin) rotateX(0deg)"
+      transform: "translateZ(42vmin) translateY( 0px ) rotateX(0deg)"
     }
   }
 

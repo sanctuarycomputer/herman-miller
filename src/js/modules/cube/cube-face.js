@@ -1,18 +1,18 @@
 class CubeFace extends React.Component {
   style = {
     base: {
-      width: "60vmin",
-      height: "60vmin",
+      width: "588px",
+      height: "588px",
       position: "absolute",
       backgroundSize: 'cover',
       boxSizing: "border-box"
     },
     front:  { 
-      transform: "translateZ( 30vmin )",
+      transform: "translateZ( 294px )",
       backfaceVisibility: "hidden"
     },
     bottom: { 
-      transform: "translateZ( -30vmin ) rotateX( -90deg )", 
+      transform: "translateZ( -294px ) rotateX( -90deg )", 
       transformOrigin: "bottom", 
       backgroundImage: `url(${this.props.asset})` 
     },
