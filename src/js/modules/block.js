@@ -124,15 +124,13 @@ class Block extends Interactable {
     base: {
       position: 'absolute',
       overflow: 'hidden',
-      cursor: 'pointer',
-      backfaceVisibilty: 'hidden'
+      cursor: 'pointer'
     },
     child: {
       width: '100%',
       height: '100%',
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
-      backfaceVisibilty: 'hidden',
       position: 'absolute',
       top: '0px',
       left: '0px'

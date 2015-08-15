@@ -128,7 +128,27 @@ const onResize = function(event) {
   let dy = -1 * event.dy;
 
   let factor = Math.max(dx, dy);
-
+  
+  const maxBoxDimension = 300;
+  const maxSquareBoxDimension = 200;
+  switch(this.aspect) {
+    case 0.5:
+      if (this.height + factor >= maxBoxDimension) {
+        factor = 0;
+      }
+      break;
+    case 1:
+      if (this.width + factor * this.aspect >= maxSquareBoxDimension) {
+        factor = 0;
+      }
+      break;
+    case 2:
+      if (this.width + factor * this.aspect >= maxBoxDimension) {
+        factor = 0; 
+      }
+      break;
+  }
+ 
   this.width  += factor * this.aspect;
   this.height += factor;
 
