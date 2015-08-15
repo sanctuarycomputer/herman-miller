@@ -103,7 +103,7 @@ class Figure extends Assetable{
       animationDelay: `${15 + this.props.position * 15}s`,
       animationName: this.figureAnimation,
       animationDirection: 'alternate',
-      animationDuration: '19s',
+      animationDuration: '22s',
       animationTimingFunction: 'linear',
       pointerEvents: 'none'
     },
@@ -129,8 +129,7 @@ class Figure extends Assetable{
     },
 
     right: {
-      transform: 'scaleX(-1)',
-      filter: 'FlipH'
+      transform: 'scaleX(-1)'
     }
 
   }
