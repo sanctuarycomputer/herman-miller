@@ -77,6 +77,12 @@ const handleSolidDragAxis = function(delta, axis) {
   }
 }
 
+const onDragStart = function(event) {
+  const Sound = window.eamesInteractive.Sound;
+  let index = randomWhole(0, 9);
+  this.activeSound = Sound.snare[index].play();
+}
+
 const onDrag = function(event) {
   this.x = (this.x || 0);
   this.y = (this.y || 0);
@@ -97,11 +103,15 @@ const onDrag = function(event) {
   });
 }
 
+const audioDidFade = function() {
+  this.activeSound.stop();
+  this.activeSound.volume(1.0);
+}
+
 const onDragEnd = function(event) {
   const Global = window.eamesInteractive;
-  const Sound = window.eamesInteractive.Sound;
-  let index = randomWhole(1, 10);
-  Sound.snare[index].play();
+  
+  this.activeSound.fade(1.0, 0.0, 400, audioDidFade.bind(this));
   Global.setRegistryState(this.state.key, {
     x: this.x,
     y: this.y
@@ -118,6 +128,10 @@ const onResizeStart = function(event) {
   this.initialWidth  = this.width;
   this.initialHeight = this.height;
   this.aspect        = this.width / this.height;
+
+  const Sound = window.eamesInteractive.Sound;
+  let index = randomWhole(0, 9);
+  this.activeSound = Sound.toms[index].play();
 }
 
 const onResize = function(event) {
@@ -192,13 +206,11 @@ const onResizeEnd = function(event) {
     let reductionRatioY = 1;
     if (maxX > 0)  {
       let requiredReduction = maxX - this.x;
-      console.log(`Reduce X: ${requiredReduction}`);
       reductionRatioX = requiredReduction / this.width;
     }
 
     if (maxY > 0)  {
       let requiredReduction = maxY - this.y;
-      console.log(`Reduce Y: ${requiredReduction}`);
       reductionRatioY = requiredReduction / this.height;
     }
 
@@ -228,10 +240,9 @@ const onResizeEnd = function(event) {
     })
   }
 
+  this.activeSound.fade(1.0, 0.0, 400, audioDidFade.bind(this));
+
   const Global = window.eamesInteractive;
-  const Sound = window.eamesInteractive.Sound;
-  let index = randomWhole(1, 10);
-  Sound.toms[index].play();
   Global.setRegistryState(this.state.key, {
     x: this.x,
     y: this.y,
@@ -247,4 +258,4 @@ const onResizeEnd = function(event) {
 }
 
 
-export { random, onDrag, onResize, onResizeStart, onDragEnd, onResizeEnd };
+export { random, onDragStart, onDrag, onResize, onResizeStart, onDragEnd, onResizeEnd };
