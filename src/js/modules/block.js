@@ -143,11 +143,13 @@ class Block extends Interactable {
       transition: '0.5s all'
     },
     idleOffsetChild: {
-      transform: 'translateX(100%) translateZ(0px)'
+      transform: 'translateX(100%) translateZ(0px)',
+      opacity: 0
     },
     activeOffsetChild: {
       transform: 'translateX(0%) translateZ(0px)',
-      transition: '0.5s all'
+      transition: '0.5s all',
+      opacity: 1
     },
     1: {
       backgroundImage: `url(${this.state.assets[0]})` 
@@ -179,7 +181,7 @@ class Block extends Interactable {
       element.addEventListener("otransitionend", this.didFinishAnimating.bind(this, element), true);
 
       const Sound = window.eamesInteractive.Sound;
-      let index = Math.round(random(1, 10));
+      let index = Math.round(random(0, 9));
       Sound.single[index].play();
 
       this.setState({

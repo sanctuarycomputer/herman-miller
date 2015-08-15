@@ -79,7 +79,7 @@ class Wheel extends Interactable {
 
   onClick() {
     const Sound = window.eamesInteractive.Sound;
-    let index = Math.round(random(1, 10));
+    let index = Math.round(random(0, 9));
     Sound.single[index].play();
 
     this.setState({

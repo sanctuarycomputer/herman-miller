@@ -8,6 +8,7 @@ class Figure extends Assetable{
     this.state['figureState'] = 'idle';
     this.state['figureLoop'] = '';
     this.state['animationLoop'] = '';
+    this.state['figureVisibility'] = 'visible';
     this.state['animationStart'] =  10 + (this.props.position * 15)
 
 
@@ -19,6 +20,19 @@ class Figure extends Assetable{
       // Start the Looking/Walking Loop
       let firstLook = this.state['animationStart'] * 1000;
       window.setTimeout(this.startLooking, firstLook);
+    });
+    
+    Global.willScreenshot(() => {
+      this.setState({
+        figureVisibility: 'hidden' 
+      });
+    });
+
+
+    Global.didScreenshot(() => {
+      this.setState({
+        figureVisibility: 'visible' 
+      });
     });
   }
 
@@ -119,32 +133,35 @@ class Figure extends Assetable{
       width: '125px',
       height: '160px'
     },
-
     looking: {
-      animationPlayState: 'paused',
+      animationPlayState: 'paused'
     },
-
     active: {
-      opacity: '1',
+      opacity: '1'
     },
-
     right: {
       transform: 'scaleX(-1)'
+    },
+    visible: {
+      visibility: 'visible' 
+    },
+    hidden: {
+      visibility: 'hidden' 
     }
-
   }
 
   render() {
     return (
-        <div style={[
-          this.style.base,
-          this.style[this.state.facing],
-          this.style[this.state.figureState],
-          this.style[this.state.figureLoop],
-        ]}>
+      <div style={[
+        this.style.base,
+        this.style[this.state.facing],
+        this.style[this.state.figureState],
+        this.style[this.state.figureLoop],
+        this.style[this.state.figureVisibility]
+      ]}>
 
-          <div style={[this.style[this.state.animationLoop]]}></div>
-        </div>
+        <div style={[this.style[this.state.animationLoop]]}></div>
+      </div>
     );
   }
 }
