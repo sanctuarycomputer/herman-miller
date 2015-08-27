@@ -23,7 +23,7 @@ class Lunar extends Wheel {
       <div style={[this.wheelStyle.base, this.wheelStyle[`wheel${this.state.wheelIndex}`]]}>
         <div style={ [this.wheelStyle.inner, this.wheelStyle[this.state.wheelLifecycle]] }></div> 
         <div style={ [this.style.base] }></div>
-        <Handle format={'handle'} assetFormat={'png'} />
+        <Handle format={'handle'} assetFormat={'svg'} />
       </div>
     );
   }

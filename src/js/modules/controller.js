@@ -10,11 +10,12 @@ class Controller extends Interactable{
   style = {
     base: {
       position: 'absolute',
-      top: '40px',
+      bottom: '-58px',
       right: '40px',
       height: '40px',
       width: '40px',
-      backgroundSize: 'contain'
+      backgroundSize: 'contain',
+      cursor: 'pointer'
     },
 
     unmuted: {

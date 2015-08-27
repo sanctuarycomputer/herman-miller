@@ -227,7 +227,7 @@ class Block extends Interactable {
           this.style[this.state.nextAsset],
           this.style[`${this.state.blockLifecycle}OffsetChild`]
         ]}></div>
-        <Handle format={'handle'} assetFormat={'png'} />
+        <Handle format={'handle'} assetFormat={'svg'} />
       </div>
     );
   }

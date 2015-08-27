@@ -73,7 +73,7 @@ class Artboard extends React.Component {
         <Block draggable={true} resizable={true} seed={1} format={'vert'} assetCount={6} />
 
         <Controller seed={1} format={'controller'} assetFormat={'svg'} assetCount={2} />
-        <Button seed={1} format={'controller'} assetFormat={'svg'} assetCount={2} />
+        <Button seed={1} format={'button'} assetFormat={'svg'} assetCount={1} />
 
         {wheels[0]}
         {wheels[1]}
