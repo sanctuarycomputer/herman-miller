@@ -33,7 +33,8 @@ var npmComponents = [
   'interact.js/interact.js',
   'rsvp/dist/rsvp.js',
   'howler/howler.js',
-  'dynamics.js/lib/dynamics.js'
+  'dynamics.js/lib/dynamics.js',
+  'fastclick/lib/fastclick.js'
 ]
 
 const vendorPath = 'vendor';

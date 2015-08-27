@@ -10,12 +10,12 @@ class Button extends Interactable {
     base: {
       position: 'absolute',
       bottom: '-58px',
-      right: '40px',
+      right: '100px',
       height: '40px',
       width: '40px',
       backgroundSize: 'contain',
-      backgroundColor: 'pink',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      backgroundImage: `url(${this.state.assets[0]})`
     }
   }
 

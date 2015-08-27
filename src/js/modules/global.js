@@ -8,6 +8,9 @@ class Global {
     this.ready                    = false;
     this._allComponentsRegistered = false;
     this.readyStack               = [];
+    this.preScreenshotStack       = [];
+    this.postScreenshotStack      = [];
+    this.readyStack               = [];
     this.boxOpenStack             = [];
     this.element                  = element;
     this.assetPath                = `${window.location.href}assets`;
@@ -20,10 +23,32 @@ class Global {
   }
 
   screenshot() {
-    html2canvas(this.element, { width: 980, height: 551}).then(function(canvas) {
+    this.didStartScreenshot();
+    html2canvas(this.element, { width: 980, height: 551}).then(canvas => {
       let blob = canvas.toDataURL('image/jpeg', 1);
       download(blob, "Herman-Miller-Screengrab.jpg", "image/jpeg");
+      this.didCompleteScreenshot();
     });
+  }
+  
+  didStartScreenshot() {
+    this.preScreenshotStack.map(callback => {
+      callback();
+    });
+  }
+  
+  didCompleteScreenshot() {
+    this.postScreenshotStack.map(callback => {
+      callback();
+    });
+  }
+
+  willScreenshot(callback) {
+    this.preScreenshotStack.push(callback);
+  }
+  
+  didScreenshot(callback) {
+    this.postScreenshotStack.push(callback);
   }
 
   onReady(callback) {

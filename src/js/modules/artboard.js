@@ -61,9 +61,6 @@ class Artboard extends React.Component {
         <Figure seed={1} position ={1} format={'figure'} assetFormat={'png'} assetCount={2} />
         <Figure seed={2} position ={2} format={'figure'} assetFormat={'png'} assetCount={2} />
         <Figure seed={1} position ={3} format={'figure'} assetFormat={'png'} assetCount={2} />
-        <Figure seed={2} position ={4} format={'figure'} assetFormat={'png'} assetCount={2} />
-        <Figure seed={1} position ={5} format={'figure'} assetFormat={'png'} assetCount={2} />
-        <Figure seed={2} position ={6} format={'figure'} assetFormat={'png'} assetCount={2} />
 
         <Block draggable={true} resizable={true} seed={1} format={'square'} assetCount={5} />
         <Block draggable={true} resizable={true} seed={2} format={'square'} assetCount={5} />
@@ -76,7 +73,7 @@ class Artboard extends React.Component {
         <Block draggable={true} resizable={true} seed={1} format={'vert'} assetCount={6} />
 
         <Controller seed={1} format={'controller'} assetFormat={'svg'} assetCount={2} />
-        <Button seed={1} format={'controller'} assetFormat={'svg'} assetCount={2} />
+        <Button seed={1} format={'button'} assetFormat={'svg'} assetCount={1} />
 
         {wheels[0]}
         {wheels[1]}

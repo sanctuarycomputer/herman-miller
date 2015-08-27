@@ -35,7 +35,7 @@ class Planetary extends Wheel {
           <div style={ [this.style.satellite, this.style.satellite2, this.wheelStyle[this.state.wheelLifecycle]] }></div>
           <div style={ [this.style.satellite, this.style.satellite3, this.wheelStyle[this.state.wheelLifecycle]] }></div>
         </div> 
-        <Handle format={'handle'} assetFormat={'png'} />
+        <Handle format={'handle'} assetFormat={'svg'} />
       </div>
     );
   }
