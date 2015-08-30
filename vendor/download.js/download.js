@@ -74,6 +74,7 @@
 		function saver(url, winMode){
 
 			if ('download' in a) { //html5 A[download]
+        a.style.visibility = "hidden"
 				a.href = url;
 				a.setAttribute("download", fn);
 				a.innerHTML = "downloading...";
