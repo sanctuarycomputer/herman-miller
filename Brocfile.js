@@ -24,8 +24,8 @@ const assets = funnel(src, {
   srcDir: 'assets',
   destDir: 'assets'
 });
-const npmPath = 'node_modules';
 
+const npmPath = 'node_modules';
 var npmComponents = [
   'loader.js/loader.js',
   'react/dist/react.js',
@@ -33,12 +33,24 @@ var npmComponents = [
   'interact.js/interact.js',
   'rsvp/dist/rsvp.js',
   'howler/howler.js',
-  'dynamics.js/lib/dynamics.js'
+  'dynamics.js/lib/dynamics.js',
+  'fastclick/lib/fastclick.js'
+]
+
+const vendorPath = 'vendor';
+var vendorComponents = [
+  'html2canvas/html2canvas.min.js',
+  'download.js/download.js',
+  'fabric.js/fabric.min.js'
 ]
 
 /* Load Vendor Libs Js */
 const npmJs = funnel(npmPath, {
   files: npmComponents
+});
+
+const vendorJs = funnel(vendorPath, {
+  files: vendorComponents 
 });
 
 /* Compile JS */
@@ -51,10 +63,10 @@ const srcJs = babelTranspiler(src, {
   }
 });
 
-const allJs = mergeTrees([npmJs, srcJs]);
+const allJs = mergeTrees([npmJs, vendorJs, srcJs]);
 
 /* Ensure Bower Files are loaded first */
-const inputFileOrder = npmComponents.concat(['js/**/*.js']);
+const inputFileOrder = npmComponents.concat(vendorComponents).concat(['js/**/*.js']);
 
 /* Concat all JS */
 const js = concat(allJs, {

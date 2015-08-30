@@ -2,6 +2,7 @@ import Assetable from 'herman-miller/modules/assetable';
 import Spinner from 'herman-miller/modules/spinner';
 import Artboard from 'herman-miller/modules/artboard';
 import Cube from 'herman-miller/modules/cube/main';
+import Overlay from 'herman-miller/modules/overlay';
 
 class Viewport extends Assetable {
   constructor() {
@@ -48,6 +49,7 @@ class Viewport extends Assetable {
         <Cube seed={1} format={'box'} assetCount={5} assetFormat={'jpg'} />
         <Artboard />
         <div style={[this.style.background, this.style[this.state.viewportLifecycle]]} />
+        <Overlay />
       </div>
     );
   }

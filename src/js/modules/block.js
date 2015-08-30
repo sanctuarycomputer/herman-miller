@@ -69,6 +69,15 @@ class Block extends Interactable {
       height: this.height,
       solid: true
     });
+
+    if (this.state.format === "horiz") {
+      const Global = window.eamesInteractive;
+      Global.onBoxOpen(() => {
+        setTimeout(() => {
+          this.onClick(); 
+        }, 2800);
+      });
+    }
   }
 
   style = {
@@ -127,18 +136,20 @@ class Block extends Interactable {
       left: '0px'
     },
     idleInitialChild: {
-      transform: 'translateX(0%)'
+      transform: 'translateX(0%) translateZ(0px)'
     },
     activeInitialChild: {
-      transform: 'translateX(-100%)',
+      transform: 'translateX(-100%) translateZ(0px)',
       transition: '0.5s all'
     },
     idleOffsetChild: {
-      transform: 'translateX(100%)'
+      transform: 'translateX(100%) translateZ(0px)',
+      opacity: 0
     },
     activeOffsetChild: {
-      transform: 'translateX(0%)',
-      transition: '0.5s all'
+      transform: 'translateX(0%) translateZ(0px)',
+      transition: '0.5s all',
+      opacity: 1
     },
     1: {
       backgroundImage: `url(${this.state.assets[0]})` 
@@ -170,7 +181,7 @@ class Block extends Interactable {
       element.addEventListener("otransitionend", this.didFinishAnimating.bind(this, element), true);
 
       const Sound = window.eamesInteractive.Sound;
-      let index = Math.round(random(1, 10));
+      let index = Math.round(random(0, 9));
       Sound.single[index].play();
 
       this.setState({
@@ -216,7 +227,7 @@ class Block extends Interactable {
           this.style[this.state.nextAsset],
           this.style[`${this.state.blockLifecycle}OffsetChild`]
         ]}></div>
-        <Handle format={'handle'} assetFormat={'png'} />
+        <Handle format={'handle'} assetFormat={'svg'} />
       </div>
     );
   }
