@@ -5,7 +5,6 @@ import Planetary from 'herman-miller/modules/planetary';
 import Optical from 'herman-miller/modules/optical';
 import Moire from 'herman-miller/modules/moire';
 import Lunar from 'herman-miller/modules/lunar';
-import Controller from 'herman-miller/modules/controller';
 import Button from 'herman-miller/modules/button';
 
 class Artboard extends React.Component {
@@ -72,15 +71,13 @@ class Artboard extends React.Component {
         <Block draggable={true} resizable={true} seed={1} format={'horiz'} assetCount={6} />
         <Block draggable={true} resizable={true} seed={1} format={'vert'} assetCount={6} />
 
-        <Controller seed={1} format={'controller'} assetFormat={'svg'} assetCount={2} />
-        <Button seed={1} format={'button'} assetFormat={'svg'} assetCount={1} />
+        <Button seed={2} format={'button'} variation={'screenshot'} assetFormat={'svg'} assetCount={1} />
+        <Button seed={1} format={'button'} variation={'audio'} assetFormat={'svg'} assetCount={2} />
+        <Button seed={3} format={'button'} variation={'info'} assetFormat={'svg'} assetCount={1} />
 
         {wheels[0]}
         {wheels[1]}
         {wheels[2]}
-
-
-
       </div>
     );
   }

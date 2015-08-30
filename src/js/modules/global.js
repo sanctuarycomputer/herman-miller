@@ -10,12 +10,24 @@ class Global {
     this.readyStack               = [];
     this.preScreenshotStack       = [];
     this.postScreenshotStack      = [];
+    this.toggleInfoStack          = [];
     this.readyStack               = [];
     this.boxOpenStack             = [];
     this.element                  = element;
     this.assetPath                = `${window.location.href}assets`;
     this.loader                   = new Loader();
     this.registry                 = [];
+    this.infoScreenActive         = false;
+  }
+
+  toggleInfo() {
+    this.toggleInfoStack.map(callback => {
+      callback();
+    });
+  }
+
+  onToggleInfo(callback) {
+    this.toggleInfoStack.push(callback);
   }
 
   start() {

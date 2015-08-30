@@ -55,7 +55,7 @@ class Figure extends Assetable{
       backgroundPosition: "0px"
     },
     '100%': {
-      backgroundPosition: "-16850px"
+      backgroundPosition: "-16750px"
     }
   });
 
@@ -64,7 +64,7 @@ class Figure extends Assetable{
       backgroundPosition: "0px"
     },
     '100%': {
-      backgroundPosition: "-2875px"
+      backgroundPosition: "-2750px"
     }
   });
 
@@ -122,13 +122,13 @@ class Figure extends Assetable{
       pointerEvents: 'none'
     },
     lookingAnimation: {
-      animation: `${this.lookAnimation} 10s steps(135) infinite`,
+      animation: `${this.lookAnimation} 10s steps(134, end) infinite`,
       background: `${this.lookCycle} left center`,
       width: '125px',
       height: '160px'
     },
     walkingAnimation: {
-      animation: `${this.walkAnimation} 1.35s steps(23) infinite`,
+      animation: `${this.walkAnimation} 1.35s steps(22, end) infinite`,
       background: `${this.walkCycle} left center`,
       width: '125px',
       height: '160px'
