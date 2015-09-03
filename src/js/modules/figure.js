@@ -2,6 +2,8 @@ import Assetable from 'herman-miller/modules/assetable';
 import { random } from 'herman-miller/modules/utils';
 
 class Figure extends Assetable{
+  currentTimeout = null;
+
   constructor(props) {
     super(...arguments)
     this.state['facing'] = 'right';
@@ -19,7 +21,7 @@ class Figure extends Assetable{
       });
       // Start the Looking/Walking Loop
       let firstLook = this.state['animationStart'] * 1000;
-      window.setTimeout(this.startLooking, firstLook);
+      this.currentTimeout = window.setTimeout(this.startLooking, firstLook);
     });
     
     Global.willScreenshot(() => {
@@ -28,12 +30,23 @@ class Figure extends Assetable{
       });
     });
 
-
     Global.didScreenshot(() => {
       this.setState({
         figureVisibility: 'visible' 
       });
     });
+
+    window.tabActive(() => {
+      let active = window.tabActive();
+      if (active) {
+        console.log('tab became active')
+        window.clearTimeout(this.currentTimeout);
+        this.currentTimeout = null; 
+        this.stopLooking();
+      } else {
+        this.startLooking(true); 
+      }
+    })
   }
 
 
@@ -68,13 +81,15 @@ class Figure extends Assetable{
     }
   });
 
-  startLooking = () => {
+  startLooking = (noTimeout) => {
     this.setState({
       figureLoop: 'looking',
       animationLoop: 'lookingAnimation'
     });
     let lookLength = random(4000, 12000);
-    window.setTimeout(this.stopLooking, lookLength);
+    if (!noTimeout) {
+      this.currentTimeout = window.setTimeout(this.stopLooking, lookLength);
+    }
   }
 
   stopLooking = () => {
@@ -83,11 +98,11 @@ class Figure extends Assetable{
       animationLoop: 'walkingAnimation'
     });
     let walkLength = random(8000, 13000);
-    window.setTimeout(this.startLooking, walkLength);
+    this.currentTimeout = window.setTimeout(this.startLooking, walkLength);
   }
 
   changeDirection = (event) => {
-    if(event.path.length === 8){
+    if (event.path.length === 8){
       this.setState({
         facing: this.state.facing === 'left' ? 'right' : 'left'
       });

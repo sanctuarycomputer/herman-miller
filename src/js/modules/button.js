@@ -4,6 +4,19 @@ import Interactable from 'herman-miller/modules/interactable';
 class Button extends Interactable {
   constructor(props) {
     super(...arguments);
+    
+    const Global = window.eamesInteractive;
+    Global.willScreenshot(() => {
+      this.setState({
+        buttonVisibility: 'hidden' 
+      });
+    });
+
+    Global.didScreenshot(() => {
+      this.setState({
+        buttonVisibility: 'visible' 
+      });
+    });
   }
 
   style = {
@@ -58,6 +71,14 @@ class Button extends Interactable {
       top: '15px',
       height: '20px',
       width: '20px'
+    },
+
+    hidden: {
+      visibility: 'hidden'
+    },
+
+    visible: {
+      visibility: 'visible' 
     }
   }
 
@@ -88,10 +109,12 @@ class Button extends Interactable {
         }
         break;
       case 'shareFacebook':
-        this.fbShare(window.location.href, 'Share', 'Facebook Share Popup', 520, 350);
+        let post = "Compose and play with this #Eames-inspired interactive toy, created by @LabourNY for @HermanMiller. #EamesPlay";
+        this.fbShare(window.location.href, 'Share', post, 520, 350);
         break;
       case 'shareTwitter':
-        this.twitterShare(window.location.href, 'Share', 520, 350);
+        let tweet = "Compose and play with this Eames-inspired interactive toy, created by @LabourNY for @HermanMiller. #EamesPlay";
+        this.twitterShare(window.location.href, tweet, 520, 350);
         break;
     }
   }
@@ -99,7 +122,7 @@ class Button extends Interactable {
   fbShare(url, title, descr, winWidth, winHeight) {
     var winTop = (screen.height / 2) - (winHeight / 2);
     var winLeft = (screen.width / 2) - (winWidth / 2);
-    window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
+    window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + 'hello'+ '&p[url]=' + url, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
   }
   
   twitterShare(url, tweet, winWidth, winHeight) {
@@ -113,7 +136,8 @@ class Button extends Interactable {
       <div style={[
         this.style.base,
         this.style[this.props.variation],
-        this.style[this.state.status]
+        this.style[this.state.status],
+        this.style[this.state.buttonVisibility]
       ]}></div>
     );
   }

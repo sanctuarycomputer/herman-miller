@@ -1,4 +1,5 @@
 import Button from 'herman-miller/modules/button';
+import Image from 'herman-miller/modules/image';
 
 class Overlay extends React.Component {
   constructor() {
@@ -14,6 +15,18 @@ class Overlay extends React.Component {
       this.setState({
         overlayState: newState 
       })
+    });
+    
+    Global.willScreenshot(() => {
+      this.setState({
+        overlayVisibility: 'hidden' 
+      });
+    });
+
+    Global.didScreenshot(() => {
+      this.setState({
+        overlayVisibility: 'visible' 
+      });
     });
   }
 
@@ -35,13 +48,13 @@ class Overlay extends React.Component {
       opacity: 1
     },
     copy: {
-      padding: '30px 120px',
+      padding: '40px 100px 0px 100px',
       color: 'white',
-      fontFamily: 'Helvetica',
+      fontFamily: 'ff-meta-web-pro, Helvetica, Arial, sans-serif',
       fontWeight: 100,
       lineHeight: '26px',
       letterSpacing: '1px',
-      fontSize: '18px'
+      fontSize: '16px'
     },
     shareInput: {
       padding: '10px',
@@ -49,14 +62,14 @@ class Overlay extends React.Component {
       outline: 'none',
       border: '2px solid white',
       color: 'white',
-      fontFamily: 'Helvetica',
+      fontFamily: 'ff-meta-web-pro, Helvetica, Arial, sans-serif',
       fontWeight: 100,
       fontSize: '15px',
       float: 'left'
     },
     credits: {
       color: 'black',
-      fontFamily: 'Helvetica',
+      fontFamily: 'ff-meta-web-pro, Helvetica, Arial, sans-serif',
       fontWeight: 100,
       lineHeight: '18px',
       letterSpacing: '1px',
@@ -67,6 +80,23 @@ class Overlay extends React.Component {
       textDecoration: 'none',
       color: 'black',
       fontWeight: 500
+    },
+    
+    hidden: {
+      visibility: 'hidden'
+    },
+
+    visible: {
+      visibility: 'visible' 
+    },
+
+    inlineBlock: {
+      margin: '0px',
+      display: 'inline-block'
+    },
+
+    floatLeft: {
+      float: 'left' 
     }
   }
 
@@ -74,16 +104,19 @@ class Overlay extends React.Component {
     return (
       <div style={[
         this.style.base,
-        this.style[this.state.overlayState]
+        this.style[this.state.overlayState],
+        this.style[this.state.overlayVisibility]
       ]}>
         <Button seed={6} format={'button'} assetFormat={'svg'} variation={'overlayCross'} />
         <div style={this.style.copy}>
-          <p>Compose and play with shape, color, texture and motion.</p>
-          <p>Stretch and shrink objects from their upper left corner.</p>
-          <p>Click on an object to bring up a new graphic.</p>
-          <p>Play some jazz - or turn it down.</p>
-          <p>Save a snapshot when you've composed somthing you like.</p>
-          <p>Share the experience with other like minds:</p>
+          <p>Ready to compose and play? Click on any object to introduce something new.</p>
+
+          <p style={[this.style.inlineBlock, this.style.floatLeft]}>Jazz is delightful, but not all the time. Toggle the </p><Image seed={1} format={'button'} assetFormat={'svg'} /><p style={this.style.inlineBlock}> to turn it on or off.</p>
+          <p>To play with scale, click and drag the upper left corner of any object.</p>
+          <p style={[this.style.inlineBlock, this.style.floatLeft]}>Like what you see? Select the </p><Image seed={2} format={'button'} assetFormat={'svg'} /><p style={this.style.inlineBlock}> to take a snapshot.</p>
+          <p>Use #EamesPlay when sharing so everyone can see.</p>
+
+          <p>Invite your friends to join in on the fun.</p>
 
           <div>
             <input readOnly={true} style={this.style.shareInput} type="text" value={this.state.shareLink} />
@@ -92,8 +125,7 @@ class Overlay extends React.Component {
           </div>
 
           <div style={this.style.credits}>
-            <p>Designed and animated by <a style={this.style.link} href="http://labour-ny.com/" target="_blank">Labour</a></p>
-            <p>Built by <a style={this.style.link} href="http://sanctuary.computer/" target="_blank">Sanctuary Computer</a></p>
+            <p>Inspired by the work of Ray and Charles Eames. Created by <a style={this.style.link} href="http://labour-ny.com/" target="_blank">Labour</a> for Herman Miller, Inc.</p>
           </div>
 
         </div>

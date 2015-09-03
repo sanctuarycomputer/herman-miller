@@ -1,5 +1,6 @@
 import { random } from 'herman-miller/modules/utils';
 import Block from 'herman-miller/modules/block';
+import Hashtag from 'herman-miller/modules/hashtag';
 import Figure from 'herman-miller/modules/figure';
 import Planetary from 'herman-miller/modules/planetary';
 import Optical from 'herman-miller/modules/optical';

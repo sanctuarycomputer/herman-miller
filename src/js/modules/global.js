@@ -14,7 +14,7 @@ class Global {
     this.readyStack               = [];
     this.boxOpenStack             = [];
     this.element                  = element;
-    this.assetPath                = `${window.location.href}assets`;
+    this.assetPath                = `${element.dataset.assetPath}assets`;
     this.loader                   = new Loader();
     this.registry                 = [];
     this.infoScreenActive         = false;

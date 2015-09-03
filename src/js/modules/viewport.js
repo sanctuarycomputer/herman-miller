@@ -1,5 +1,6 @@
 import Assetable from 'herman-miller/modules/assetable';
 import Spinner from 'herman-miller/modules/spinner';
+import Shimmer from 'herman-miller/modules/shimmer';
 import Artboard from 'herman-miller/modules/artboard';
 import Cube from 'herman-miller/modules/cube/main';
 import Overlay from 'herman-miller/modules/overlay';
@@ -46,6 +47,7 @@ class Viewport extends Assetable {
     return (
       <div style={[this.style.base]}>
         <Spinner seed={1} format={'spinner'} />
+        <Shimmer seed={1} format={'shimmer'} assetFormat={'png'} />
         <Cube seed={1} format={'box'} assetCount={5} assetFormat={'jpg'} />
         <Artboard />
         <div style={[this.style.background, this.style[this.state.viewportLifecycle]]} />

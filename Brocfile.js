@@ -41,7 +41,8 @@ const vendorPath = 'vendor';
 var vendorComponents = [
   'html2canvas/html2canvas.min.js',
   'download.js/download.js',
-  'fabric.js/fabric.min.js'
+  'fabric.js/fabric.min.js',
+  'tab-active/tab-active.js'
 ]
 
 /* Load Vendor Libs Js */
