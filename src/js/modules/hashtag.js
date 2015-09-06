@@ -1,9 +1,9 @@
-class Hashtag extends React.Component {
+import Assetable from 'herman-miller/modules/assetable';
+
+class Hashtag extends Assetable {
   constructor() {
     super(...arguments);
-    this.state = {
-      hashtagVisibility: 'hidden'
-    }
+    this.state['hashtagVisibility'] = 'visible';
 
     const Global = window.eamesInteractive;
     Global.willScreenshot(() => {
@@ -21,8 +21,10 @@ class Hashtag extends React.Component {
 
   style = {
     base: {
-      bottom: '-75px', 
-      height: '75px',
+      bottom: '-55px', 
+      left: '30px',
+      height: '20px',
+      width: '600px',
       position: 'absolute',
       color: 'white',
       fontFamily: 'ff-meta-web-pro, Helvetica, Arial, sans-serif',
@@ -30,6 +32,7 @@ class Hashtag extends React.Component {
       lineHeight: '18px',
       letterSpacing: '1px',
       fontSize: '14px',
+      backgroundImage: `url(${this.state.assets[0]})`
     },
     para: {
       marginBottom: '-7px',
@@ -51,8 +54,6 @@ class Hashtag extends React.Component {
         this.style.base,
         this.style[this.state.hashtagVisibility]
       ]}>
-        <p style={this.style.para}>Herman Miller & Eames Office</p> 
-        <p style={this.style.para}>#eamesplay</p>
       </div>    
     )
   }

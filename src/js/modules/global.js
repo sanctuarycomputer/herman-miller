@@ -79,7 +79,7 @@ class Global {
 
   boxWillOpen() {
     let background = new Howl(
-      {urls: ['/assets/sound/main_loop.mp3'],
+      {urls: [`${this.assetPath}/sound/main_loop.mp3`],
       buffer: true,
       loop: true})
 

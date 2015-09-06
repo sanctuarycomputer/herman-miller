@@ -39,7 +39,6 @@ class Figure extends Assetable{
     window.tabActive(() => {
       let active = window.tabActive();
       if (active) {
-        console.log('tab became active')
         window.clearTimeout(this.currentTimeout);
         this.currentTimeout = null; 
         this.stopLooking();
@@ -48,7 +47,6 @@ class Figure extends Assetable{
       }
     })
   }
-
 
   walkCycle = `url(${this.state.assets[0]})`;
   lookCycle = `url(${this.state.assets[1]})`;

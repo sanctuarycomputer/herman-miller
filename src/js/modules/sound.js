@@ -11,9 +11,11 @@ class Sound {
   }
 
   loadSounds(type){
+    const Global = window.eamesInteractive;
+
     for(let i = 1; i <= 10; i++){
       let sound  = new Howl(
-        {urls: [`/assets/sound/${type}_${i}.mp3`]})
+        {urls: [`${Global.assetPath}/sound/${type}_${i}.mp3`]})
       this[type].push(sound);
     }
   }

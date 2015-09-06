@@ -42,7 +42,7 @@ class Shimmer extends Assetable {
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
       zIndex: 2,
-      top: '30px',
+      top: '80px',
       left: '50%',
       transform: 'translateX(-50%)',
       pointerEvents: 'none'
