@@ -14,7 +14,7 @@ class Global {
     this.readyStack               = [];
     this.boxOpenStack             = [];
     this.element                  = element;
-    this.assetPath                = `${window.location.href}assets`;
+    this.assetPath                = `${element.dataset.assetPath}assets`;
     this.loader                   = new Loader();
     this.registry                 = [];
     this.infoScreenActive         = false;
@@ -79,7 +79,7 @@ class Global {
 
   boxWillOpen() {
     let background = new Howl(
-      {urls: ['/assets/sound/main_loop.mp3'],
+      {urls: [`${this.assetPath}/sound/main_loop.mp3`],
       buffer: true,
       loop: true})
 

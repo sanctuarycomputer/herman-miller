@@ -1,5 +1,6 @@
 import { random } from 'herman-miller/modules/utils';
 import Block from 'herman-miller/modules/block';
+import Hashtag from 'herman-miller/modules/hashtag';
 import Figure from 'herman-miller/modules/figure';
 import Planetary from 'herman-miller/modules/planetary';
 import Optical from 'herman-miller/modules/optical';
@@ -74,6 +75,8 @@ class Artboard extends React.Component {
         <Button seed={2} format={'button'} variation={'screenshot'} assetFormat={'svg'} assetCount={1} />
         <Button seed={1} format={'button'} variation={'audio'} assetFormat={'svg'} assetCount={2} />
         <Button seed={3} format={'button'} variation={'info'} assetFormat={'svg'} assetCount={1} />
+
+        <Hashtag seed={1} format={'hashtag'} assetFormat={'png'} assetCount={1} />
 
         {wheels[0]}
         {wheels[1]}

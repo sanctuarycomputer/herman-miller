@@ -18,15 +18,15 @@ class CubeFace extends React.Component {
     },
     flat: {
       base:   { 
-        transform: "translateZ( -29.5vmin )", 
+        transform: "translateZ( 236px )", 
         transition: "transform 2s ease, opacity 0.5s ease-out" 
       },
       front:  { 
-        transform: "translateZ( 0vmin )",
+        transform: "translateZ( 0px )",
         backfaceVisibility: "hidden"
       },
       bottom: { 
-        transform: "translateZ( -30vmin ) rotateX( -182deg )", 
+        transform: "translateZ( 240px ) rotateX( -182deg )", 
         opacity: '0', 
         transition: '0s' 
       }

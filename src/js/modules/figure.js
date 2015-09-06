@@ -2,6 +2,8 @@ import Assetable from 'herman-miller/modules/assetable';
 import { random } from 'herman-miller/modules/utils';
 
 class Figure extends Assetable{
+  currentTimeout = null;
+
   constructor(props) {
     super(...arguments)
     this.state['facing'] = 'right';
@@ -11,7 +13,6 @@ class Figure extends Assetable{
     this.state['figureVisibility'] = 'visible';
     this.state['animationStart'] =  10 + (this.props.position * 15)
 
-
     const Global = window.eamesInteractive;
     Global.onBoxOpen(() => {
       this.setState({
@@ -19,7 +20,7 @@ class Figure extends Assetable{
       });
       // Start the Looking/Walking Loop
       let firstLook = this.state['animationStart'] * 1000;
-      window.setTimeout(this.startLooking, firstLook);
+      this.currentTimeout = window.setTimeout(this.startLooking, firstLook);
     });
     
     Global.willScreenshot(() => {
@@ -28,14 +29,53 @@ class Figure extends Assetable{
       });
     });
 
-
     Global.didScreenshot(() => {
       this.setState({
         figureVisibility: 'visible' 
       });
     });
+
+    window.tabActive(() => {
+      let active = window.tabActive();
+      if (active) {
+        window.clearTimeout(this.currentTimeout);
+        this.currentTimeout = null; 
+        this.stopLooking();
+        this.ensureFigureDirection();
+      } else {
+        this.startLooking(true); 
+      }
+    })
+  }
+  
+  // Hacks to ensure figure is facing the
+  // correct direction
+  sample1 = 0;
+  sample2 = 0;
+  ensureFigureDirection() {
+    let node = React.findDOMNode(this);
+    this.sample1 = node.getBoundingClientRect().left;
+    window.setTimeout(this.collectSample.bind(this), 100);
   }
 
+  collectSample() {
+    let node = React.findDOMNode(this);
+    this.sample2 = node.getBoundingClientRect().left;
+
+    let diff = this.sample2 - this.sample1;;
+    if (diff > 0) {
+      this.setState({
+        facing: 'right' 
+      });
+    } else if (diff < 0) {
+      this.setState({
+        facing: 'left' 
+      });
+    }   
+    this.sample1 = 0;
+    this.sample2 = 0;
+  }
+  // Hacks Over
 
   walkCycle = `url(${this.state.assets[0]})`;
   lookCycle = `url(${this.state.assets[1]})`;
@@ -68,13 +108,15 @@ class Figure extends Assetable{
     }
   });
 
-  startLooking = () => {
+  startLooking = (noTimeout) => {
     this.setState({
       figureLoop: 'looking',
       animationLoop: 'lookingAnimation'
     });
     let lookLength = random(4000, 12000);
-    window.setTimeout(this.stopLooking, lookLength);
+    if (!noTimeout) {
+      this.currentTimeout = window.setTimeout(this.stopLooking, lookLength);
+    }
   }
 
   stopLooking = () => {
@@ -83,11 +125,11 @@ class Figure extends Assetable{
       animationLoop: 'walkingAnimation'
     });
     let walkLength = random(8000, 13000);
-    window.setTimeout(this.startLooking, walkLength);
+    this.currentTimeout = window.setTimeout(this.startLooking, walkLength);
   }
 
   changeDirection = (event) => {
-    if(event.path.length === 8){
+    if (event.path.length === 8){
       this.setState({
         facing: this.state.facing === 'left' ? 'right' : 'left'
       });
