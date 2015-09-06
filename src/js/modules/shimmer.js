@@ -39,8 +39,6 @@ class Shimmer extends Assetable {
       width: '100px',
       height: '100px',
       position: 'absolute',
-      backgroundSize: 'contain',
-      backgroundRepeat: 'no-repeat',
       zIndex: 2,
       top: '80px',
       left: '50%',
@@ -53,7 +51,7 @@ class Shimmer extends Assetable {
     shimmer: {
       opacity: 1,
       animation: `${this.shimmerAnimation} 1s steps(15, end) infinite`,
-      background: `${this.shimmerCycle} left center`
+      background: `${this.shimmerCycle} no-repeat`
     } 
   }
 

@@ -3,7 +3,7 @@ import Assetable from 'herman-miller/modules/assetable';
 class Hashtag extends Assetable {
   constructor() {
     super(...arguments);
-    this.state['hashtagVisibility'] = 'visible';
+    this.state['hashtagVisibility'] = 'hidden';
 
     const Global = window.eamesInteractive;
     Global.willScreenshot(() => {

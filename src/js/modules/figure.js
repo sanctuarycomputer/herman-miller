@@ -13,7 +13,6 @@ class Figure extends Assetable{
     this.state['figureVisibility'] = 'visible';
     this.state['animationStart'] =  10 + (this.props.position * 15)
 
-
     const Global = window.eamesInteractive;
     Global.onBoxOpen(() => {
       this.setState({
@@ -42,11 +41,41 @@ class Figure extends Assetable{
         window.clearTimeout(this.currentTimeout);
         this.currentTimeout = null; 
         this.stopLooking();
+        this.ensureFigureDirection();
       } else {
         this.startLooking(true); 
       }
     })
   }
+  
+  // Hacks to ensure figure is facing the
+  // correct direction
+  sample1 = 0;
+  sample2 = 0;
+  ensureFigureDirection() {
+    let node = React.findDOMNode(this);
+    this.sample1 = node.getBoundingClientRect().left;
+    window.setTimeout(this.collectSample.bind(this), 100);
+  }
+
+  collectSample() {
+    let node = React.findDOMNode(this);
+    this.sample2 = node.getBoundingClientRect().left;
+
+    let diff = this.sample2 - this.sample1;;
+    if (diff > 0) {
+      this.setState({
+        facing: 'right' 
+      });
+    } else if (diff < 0) {
+      this.setState({
+        facing: 'left' 
+      });
+    }   
+    this.sample1 = 0;
+    this.sample2 = 0;
+  }
+  // Hacks Over
 
   walkCycle = `url(${this.state.assets[0]})`;
   lookCycle = `url(${this.state.assets[1]})`;
