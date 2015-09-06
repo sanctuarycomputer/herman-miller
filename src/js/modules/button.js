@@ -113,7 +113,7 @@ class Button extends Interactable {
         this.fbShare(window.location.href, 'Share', post, 520, 350);
         break;
       case 'shareTwitter':
-        let tweet = "Compose and play with this Eames-inspired interactive toy, created by @LabourNY for @HermanMiller. #EamesPlay";
+        let tweet = "Compose and play with this %23Eames-inspired interactive toy, created by @LabourNY for @HermanMiller. #EamesPlay";
         this.twitterShare(window.location.href, tweet, 520, 350);
         break;
     }
