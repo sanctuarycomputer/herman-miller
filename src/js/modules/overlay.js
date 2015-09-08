@@ -97,6 +97,10 @@ class Overlay extends React.Component {
 
     floatLeft: {
       float: 'left' 
+    },
+
+    marginTop: {
+      marginTop: '20px' 
     }
   }
 
@@ -109,12 +113,15 @@ class Overlay extends React.Component {
       ]}>
         <Button seed={6} format={'button'} assetFormat={'svg'} variation={'overlayCross'} />
         <div style={this.style.copy}>
-          <p>Ready to compose and play? Click on any object to introduce something new.</p>
+          <p style={this.style.marginTop}>Ready to compose and play? Click on any object to introduce something new.</p>
 
           <p style={[this.style.inlineBlock, this.style.floatLeft]}>Jazz is delightful, but not all the time. Toggle the </p><Image seed={1} format={'button'} assetFormat={'svg'} /><p style={this.style.inlineBlock}> to turn it on or off.</p>
-          <p>To play with scale, click and drag the upper left corner of any object.</p>
+
+          <p style={this.style.marginTop}>To play with scale, click and drag the upper left corner of any object.</p>
+          
           <p style={[this.style.inlineBlock, this.style.floatLeft]}>Like what you see? Select the </p><Image seed={2} format={'button'} assetFormat={'svg'} /><p style={this.style.inlineBlock}> to take a snapshot.</p>
-          <p>Use #EamesPlay when sharing so everyone can see.</p>
+
+          <p style={this.style.marginTop}>Use #EamesPlay when sharing so everyone can see.</p>
 
           <p>Invite your friends to join in on the fun.</p>
 
@@ -125,7 +132,7 @@ class Overlay extends React.Component {
           </div>
 
           <div style={this.style.credits}>
-            <p>Inspired by the work of Ray and Charles Eames. Created by <a style={this.style.link} href="http://labour-ny.com/" target="_blank">Labour</a> for Herman Miller, Inc.</p>
+            <p style={this.style.marginTop}>Inspired by the work of Ray and Charles Eames. Created by <a style={this.style.link} href="http://labour-ny.com/" target="_blank">Labour</a> for Herman Miller, Inc.</p>
           </div>
 
         </div>

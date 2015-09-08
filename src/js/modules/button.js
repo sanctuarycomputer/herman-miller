@@ -51,8 +51,8 @@ class Button extends Interactable {
       bottom: 'inherit',
       display: 'inline-block',
       marginLeft: '10px',
-      width: '38px',
-      height: '38px',
+      width: '42px',
+      height: '42px',
       border: '2px solid white'
     },
     
@@ -61,8 +61,8 @@ class Button extends Interactable {
       bottom: 'inherit',
       display: 'inline-block',
       marginLeft: '10px',
-      width: '38px',
-      height: '38px',
+      width: '42px',
+      height: '42px',
       border: '2px solid white'
     },
 
@@ -113,7 +113,7 @@ class Button extends Interactable {
         this.fbShare(window.location.href, 'Share', post, 520, 350);
         break;
       case 'shareTwitter':
-        let tweet = "Compose and play with this %23Eames-inspired interactive toy, created by @LabourNY for @HermanMiller. #EamesPlay";
+        let tweet = "Compose and play with this %23Eames-inspired interactive toy, created by @LabourNY for @HermanMiller. %23EamesPlay";
         this.twitterShare(window.location.href, tweet, 520, 350);
         break;
     }

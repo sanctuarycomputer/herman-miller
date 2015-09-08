@@ -35,17 +35,20 @@ class Figure extends Assetable{
       });
     });
 
-    window.tabActive(() => {
-      let active = window.tabActive();
-      if (active) {
-        window.clearTimeout(this.currentTimeout);
-        this.currentTimeout = null; 
-        this.stopLooking();
-        this.ensureFigureDirection();
-      } else {
-        this.startLooking(true); 
-      }
-    })
+    //window.tabActive(() => {
+    //  let active = window.tabActive();
+    //  if (active) {
+    //    window.clearTimeout(this.currentTimeout);
+    //    this.currentTimeout = null; 
+    //    this.stopLooking();
+    //    this.ensureFigureDirection();
+    //  } else {
+    //    this.startLooking(true); 
+    //  }
+    //});
+    
+    // Elite Hacks
+    window.setInterval(this.ensureFigureDirection.bind(this), 500);
   }
   
   // Hacks to ensure figure is facing the
@@ -53,6 +56,7 @@ class Figure extends Assetable{
   sample1 = 0;
   sample2 = 0;
   ensureFigureDirection() {
+    console.log('ensure!');
     let node = React.findDOMNode(this);
     this.sample1 = node.getBoundingClientRect().left;
     window.setTimeout(this.collectSample.bind(this), 100);
@@ -62,7 +66,7 @@ class Figure extends Assetable{
     let node = React.findDOMNode(this);
     this.sample2 = node.getBoundingClientRect().left;
 
-    let diff = this.sample2 - this.sample1;;
+    let diff = this.sample2 - this.sample1;
     if (diff > 0) {
       this.setState({
         facing: 'right' 
