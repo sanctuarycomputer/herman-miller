@@ -56,7 +56,6 @@ class Figure extends Assetable{
   sample1 = 0;
   sample2 = 0;
   ensureFigureDirection() {
-    console.log('ensure!');
     let node = React.findDOMNode(this);
     this.sample1 = node.getBoundingClientRect().left;
     window.setTimeout(this.collectSample.bind(this), 100);

@@ -95,12 +95,16 @@ class Overlay extends React.Component {
       display: 'inline-block'
     },
 
+    bumpHack: {
+      transform: 'translateY(-3px)' 
+    },
+
     floatLeft: {
       float: 'left' 
     },
 
     marginTop: {
-      marginTop: '20px' 
+      marginTop: '15px' 
     }
   }
 
@@ -115,11 +119,11 @@ class Overlay extends React.Component {
         <div style={this.style.copy}>
           <p style={this.style.marginTop}>Ready to compose and play? Click on any object to introduce something new.</p>
 
-          <p style={[this.style.inlineBlock, this.style.floatLeft]}>Jazz is delightful, but not all the time. Toggle the </p><Image seed={1} format={'button'} assetFormat={'svg'} /><p style={this.style.inlineBlock}> to turn it on or off.</p>
+          <p style={[this.style.inlineBlock, this.style.floatLeft]}>Jazz is delightful, but not all the time. Toggle the </p><Image seed={1} format={'button'} assetFormat={'svg'} /><p style={[this.style.inlineBlock, this.style.bumpHack]}> to turn it on or off.</p>
 
           <p style={this.style.marginTop}>To play with scale, click and drag the upper left corner of any object.</p>
           
-          <p style={[this.style.inlineBlock, this.style.floatLeft]}>Like what you see? Select the </p><Image seed={2} format={'button'} assetFormat={'svg'} /><p style={this.style.inlineBlock}> to take a snapshot.</p>
+          <p style={[this.style.inlineBlock, this.style.floatLeft]}>Like what you see? Select the </p><Image seed={2} format={'button'} assetFormat={'svg'} /><p style={[this.style.inlineBlock, this.style.bumpHack]}> to take a snapshot.</p>
 
           <p style={this.style.marginTop}>Use #EamesPlay when sharing so everyone can see.</p>
 
