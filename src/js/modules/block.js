@@ -33,30 +33,54 @@ class Block extends Interactable {
       default:
         this.width = 100;
         this.height = 100;
-        switch(this.state.seed) {
-          case 1:
+        switch(this.state.key) {
+          case 'square-1':
             this.x = 600;
             this.y = 276;
             break;
-          case 2:
+          case 'square-2':
             this.x = 600;
             this.y = 176;
             break;
-          case 3:
+          case 'square-3':
             this.x = 600;
             this.y = 76;
             break;
-          case 4:
+          case 'square-4':
             this.x = 400;
             this.y = 376;
             break;
-          case 5:
+          case 'square-5':
             this.x = 300;
             this.y = 376;
             break;
-          case 6:
+          case 'square-6':
             this.x = 400;
             this.y = 276;
+            break;
+          case 'wall-1':
+            this.x = 0;
+            this.y = -300;
+            this.width = 980;
+            this.height = 300;
+            break;
+          case 'wall-2':
+            this.x = 980;
+            this.y = 0;
+            this.width = 300;
+            this.height = 551;
+            break;
+          case 'wall-3':
+            this.x = 0;
+            this.y = 476;
+            this.width = 980;
+            this.height = 300;
+            break;
+          case 'wall-4':
+            this.x = -300;
+            this.y = 0;
+            this.width = 300;
+            this.height = 980;
             break;
         }
     }

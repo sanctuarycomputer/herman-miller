@@ -61,6 +61,11 @@ class Artboard extends React.Component {
         <Figure seed={1} position={1} format={'figure'} assetFormat={'png'} assetCount={2} />
         <Figure seed={2} position={2} format={'figure'} assetFormat={'png'} assetCount={2} />
         <Figure seed={1} position={3} format={'figure'} assetFormat={'png'} assetCount={2} />
+        
+        <Block draggable={false} resizable={false} seed={1} format={'wall'} assetCount={2} assetFormat={'png'} />
+        <Block draggable={false} resizable={false} seed={2} format={'wall'} assetCount={2} assetFormat={'png'} />
+        <Block draggable={false} resizable={false} seed={3} format={'wall'} assetCount={2} assetFormat={'png'} />
+        <Block draggable={false} resizable={false} seed={4} format={'wall'} assetCount={2} assetFormat={'png'} />
 
         <Block draggable={true} resizable={true} seed={1} format={'square'} assetCount={5} />
         <Block draggable={true} resizable={true} seed={2} format={'square'} assetCount={5} />
