@@ -60,7 +60,7 @@ class Block extends Interactable {
             break;
           case 'wall-1':
             this.x = 0;
-            this.y = -300;
+            this.y = -299.999;
             this.width = 980;
             this.height = 300;
             break;
@@ -77,7 +77,7 @@ class Block extends Interactable {
             this.height = 300;
             break;
           case 'wall-4':
-            this.x = -300;
+            this.x = -299.999;
             this.y = 0;
             this.width = 300;
             this.height = 980;
