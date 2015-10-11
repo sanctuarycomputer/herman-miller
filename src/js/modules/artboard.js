@@ -58,9 +58,9 @@ class Artboard extends React.Component {
 
     return (
       <div style={[this.style.base, this.style[this.state.artboardLifecycle]]}>
-        <Figure seed={1} position ={1} format={'figure'} assetFormat={'png'} assetCount={2} />
-        <Figure seed={2} position ={2} format={'figure'} assetFormat={'png'} assetCount={2} />
-        <Figure seed={1} position ={3} format={'figure'} assetFormat={'png'} assetCount={2} />
+        <Figure seed={1} position={1} format={'figure'} assetFormat={'png'} assetCount={2} />
+        <Figure seed={2} position={2} format={'figure'} assetFormat={'png'} assetCount={2} />
+        <Figure seed={1} position={3} format={'figure'} assetFormat={'png'} assetCount={2} />
 
         <Block draggable={true} resizable={true} seed={1} format={'square'} assetCount={5} />
         <Block draggable={true} resizable={true} seed={2} format={'square'} assetCount={5} />
@@ -72,9 +72,9 @@ class Artboard extends React.Component {
         <Block draggable={true} resizable={true} seed={1} format={'horiz'} assetCount={6} />
         <Block draggable={true} resizable={true} seed={1} format={'vert'} assetCount={6} />
 
-        <Button seed={2} format={'button'} variation={'screenshot'} assetFormat={'svg'} assetCount={1} />
+        <Button seed={2} format={'button'} variation={'screenshot'} assetFormat={'svg'} assetCount={2} />
         <Button seed={1} format={'button'} variation={'audio'} assetFormat={'svg'} assetCount={2} />
-        <Button seed={3} format={'button'} variation={'info'} assetFormat={'svg'} assetCount={1} />
+        <Button seed={3} format={'button'} variation={'info'} assetFormat={'svg'} assetCount={2} />
 
         <Hashtag seed={1} format={'hashtag'} assetFormat={'png'} assetCount={1} />
 

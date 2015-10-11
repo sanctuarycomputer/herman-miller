@@ -12,9 +12,12 @@ class Overlay extends React.Component {
     const Global = window.eamesInteractive;
     Global.onToggleInfo(() => {
       let newState = this.state.overlayState === 'overlayActive' ? 'overlayInactive' : 'overlayActive';
+      
       this.setState({
         overlayState: newState 
-      })
+      });
+      
+      Global.infoScreenActive = newState === 'overlayActive';
     });
     
     Global.willScreenshot(() => {

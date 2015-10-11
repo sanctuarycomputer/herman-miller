@@ -4,6 +4,8 @@ import Interactable from 'herman-miller/modules/interactable';
 class Button extends Interactable {
   constructor(props) {
     super(...arguments);
+          
+    Howler.mute();
     
     const Global = window.eamesInteractive;
     Global.willScreenshot(() => {
@@ -17,6 +19,25 @@ class Button extends Interactable {
         buttonVisibility: 'visible' 
       });
     });
+    
+    if (this.props.variation === 'info') {
+      Global.onToggleInfo(() => {
+        if (!Global.infoScreenActive) {
+          this.setState({
+            status: 'infoActive'
+          });
+        } else {
+          this.setState({
+            status: null
+          });
+        }
+      });
+    }
+  }
+
+  bounceElement() {
+    let el = React.findDOMNode(this);
+    dynamics.animate(el, { scale: 1.25 }, { type: dynamics.bounce });
   }
 
   style = {
@@ -32,18 +53,38 @@ class Button extends Interactable {
     },
 
     screenshot: {
-      right: '20px'
+      right: '140px',
+      transition: "opacity 350ms",
+      ':hover': {
+        backgroundImage: `url(${this.state.assets[1]})`,
+        opacity: 0.6
+      }
     },
 
     audio: {
-      right: '80px'
+      right: '20px',
+      transition: "opacity 350ms",
+      ':hover': {
+        backgroundImage: `url(${this.state.assets[1]})`,
+        opacity: 0.6
+      }
     },
+
     muted: {
       backgroundImage: `url(${this.state.assets[1]})`
     },
 
     info: {
-      right: '140px'
+      right: '80px',
+      transition: "opacity 350ms",
+      ':hover': {
+        backgroundImage: `url(${this.state.assets[1]})`,
+        opacity: 0.6
+      }
+    },
+
+    infoActive: {
+      backgroundImage: `url(${this.state.assets[1]})`
     },
 
     shareFacebook: {
@@ -80,6 +121,10 @@ class Button extends Interactable {
     visible: {
       visibility: 'visible' 
     }
+  }
+
+  toggleOverlay() {
+  
   }
 
   onClick() {
@@ -138,7 +183,7 @@ class Button extends Interactable {
         this.style[this.props.variation],
         this.style[this.state.status],
         this.style[this.state.buttonVisibility]
-      ]}></div>
+      ]} onMouseOver={this.bounceElement.bind(this)}></div>
     );
   }
 }
