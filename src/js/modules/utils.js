@@ -42,7 +42,7 @@ const collisionsFor = function(mode, objects) {
 
 const relevantObjectsFor = function(delta, axis, metric) {
   const Global = window.eamesInteractive;
-  const solids = Global.getSolidObjects(this.key);
+  const solids = Global.getSolidObjects(this.state.key);
 
   let relevantObjects = [];
   if (delta) {
