@@ -5,8 +5,6 @@ class Button extends Interactable {
   constructor(props) {
     super(...arguments);
           
-    Howler.mute();
-    
     const Global = window.eamesInteractive;
     Global.willScreenshot(() => {
       this.setState({
