@@ -42,7 +42,7 @@ const collisionsFor = function(mode, objects) {
 
 const relevantObjectsFor = function(delta, axis, metric) {
   const Global = window.eamesInteractive;
-  const solids = Global.getSolidObjects(this.key);
+  const solids = Global.getSolidObjects(this.state.key);
 
   let relevantObjects = [];
   if (delta) {
@@ -145,9 +145,16 @@ const onResize = function(event) {
   
   const maxBoxDimension = 300;
   const maxSquareBoxDimension = 200;
+  
+  const minBoxDimension = 100;
+  const minSquareBoxDimension = 50;
+
   switch(this.aspect) {
     case 0.5:
       if (this.height + factor >= maxBoxDimension) {
+        factor = 0;
+      }
+      if (this.height + factor * this.aspect < minBoxDimension) {
         factor = 0;
       }
       break;
@@ -155,10 +162,18 @@ const onResize = function(event) {
       if (this.width + factor * this.aspect >= maxSquareBoxDimension) {
         factor = 0;
       }
+      
+      if (this.width + factor * this.aspect < minSquareBoxDimension) {
+        factor = 0;
+      }
       break;
     case 2:
       if (this.width + factor * this.aspect >= maxBoxDimension) {
         factor = 0; 
+      }
+      
+      if (this.width + factor * this.aspect < minBoxDimension) {
+        factor = 0;
       }
       break;
   }
