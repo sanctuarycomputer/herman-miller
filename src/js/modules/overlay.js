@@ -4,6 +4,7 @@ import Image from 'herman-miller/modules/image';
 class Overlay extends React.Component {
   constructor() {
     super(...arguments);
+
     this.state = {
       overlayState: 'overlayInactive',
       shareLink: window.location.href
@@ -31,6 +32,8 @@ class Overlay extends React.Component {
         overlayVisibility: 'visible' 
       });
     });
+
+    this.state.translations = Global.translations;
   }
 
   style = {
@@ -51,13 +54,16 @@ class Overlay extends React.Component {
       opacity: 1
     },
     copy: {
-      padding: '40px 100px 0px 100px',
+      padding: '0px 100px 0px 100px',
       color: 'white',
       fontFamily: 'ff-meta-web-pro, Helvetica, Arial, sans-serif',
       fontWeight: 100,
       lineHeight: '26px',
       letterSpacing: '1px',
-      fontSize: '16px'
+      fontSize: '16px',
+      position: 'absolute',
+      top: '50%',
+      transform: 'translateY(-50%)'
     },
     shareInput: {
       padding: '10px',
@@ -120,26 +126,23 @@ class Overlay extends React.Component {
       ]}>
         <Button seed={6} format={'button'} assetFormat={'svg'} variation={'overlayCross'} />
         <div style={this.style.copy}>
-          <p style={this.style.marginTop}>Ready to compose and play? Click on any object to introduce something new.</p>
+          <p style={this.style.marginTop}>{this.state.translations.lineOne}</p>
 
-          <p style={[this.style.inlineBlock, this.style.floatLeft]}>Jazz is delightful, but not all the time. Toggle the </p><Image seed={1} format={'button'} assetFormat={'svg'} /><p style={[this.style.inlineBlock, this.style.bumpHack]}> to turn it on or off.</p>
+          <p style={this.style.marginTop}>{this.state.translations.lineTwo}</p>
 
-          <p style={this.style.marginTop}>To play with scale, click and drag the upper left corner of any object.</p>
+          <p style={[this.style.inlineBlock, this.style.floatLeft]}>{this.state.translations.lineThreeA}</p>
+          <Image seed={1} format={'button'} assetFormat={'svg'} />
+          <p style={[this.style.inlineBlock, this.style.bumpHack]}>{this.state.translations.lineThreeB}</p>
           
-          <p style={[this.style.inlineBlock, this.style.floatLeft]}>Like what you see? Select the </p><Image seed={2} format={'button'} assetFormat={'svg'} /><p style={[this.style.inlineBlock, this.style.bumpHack]}> to take a snapshot.</p>
-
-          <p style={this.style.marginTop}>Use #EamesPlay when sharing so everyone can see.</p>
-
-          <p>Invite your friends to join in on the fun.</p>
+          <p>{this.state.translations.lineFour}</p>
 
           <div>
-            <input readOnly={true} style={this.style.shareInput} type="text" value={this.state.shareLink} />
             <Button seed={5} format={'button'} assetFormat={'svg'} variation={'shareFacebook'} />
             <Button seed={4} format={'button'} assetFormat={'svg'} variation={'shareTwitter'} />
           </div>
 
           <div style={this.style.credits}>
-            <p style={this.style.marginTop}>Inspired by the work of Ray and Charles Eames. Created by <a style={this.style.link} href="http://labour-ny.com/" target="_blank">Labour</a> for Herman Miller, Inc.</p>
+            <p style={this.style.marginTop}>{this.state.translations.creditLineA}<a style={this.style.link} href="http://labour-ny.com/" target="_blank"> Labour </a>{this.state.translations.creditLineB}</p>
           </div>
 
         </div>
