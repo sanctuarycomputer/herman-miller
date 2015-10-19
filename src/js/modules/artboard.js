@@ -77,7 +77,6 @@ class Artboard extends React.Component {
         <Block draggable={true} resizable={true} seed={1} format={'horiz'} assetCount={6} />
         <Block draggable={true} resizable={true} seed={1} format={'vert'} assetCount={6} />
 
-        <Button seed={2} format={'button'} variation={'screenshot'} assetFormat={'svg'} assetCount={2} />
         <Button seed={1} format={'button'} variation={'audio'} assetFormat={'svg'} assetCount={2} />
         <Button seed={3} format={'button'} variation={'info'} assetFormat={'svg'} assetCount={2} />
 

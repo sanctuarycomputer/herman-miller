@@ -72,7 +72,7 @@ const inputFileOrder = npmComponents.concat(vendorComponents).concat(['js/**/*.j
 /* Concat all JS */
 const js = concat(allJs, {
   inputFiles: inputFileOrder,
-  outputFile: '/' + pkg.name + '.js',
+  outputFile: '/eames-interactive-story.js',
   footer: 'require("herman-miller/app");'
 });
 
