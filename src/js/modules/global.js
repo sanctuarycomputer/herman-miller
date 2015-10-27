@@ -15,9 +15,23 @@ class Global {
     this.boxOpenStack             = [];
     this.element                  = element;
     this.assetPath                = `${element.dataset.assetPath}assets`;
+    this.locale                   = `${element.dataset.localeCode}` || "en";
+    this.translations             = this._setupTranslations();
     this.loader                   = new Loader();
     this.registry                 = [];
     this.infoScreenActive         = false;
+  }
+
+  _setupTranslations() {
+    let i18n = window.eamesInteractiveStoryTranslations;
+    
+    if (!i18n) {
+      throw new Error("Eames Interactive: The window.eamesInteractiveStoryTranslations object is undefined.");
+    } else if (!i18n[this.locale]) {
+      throw new Error(`Eames Interactive: The window.eamesInteractiveTranslations object does not define the ${this.locale} locale.`);
+    }
+
+    return i18n[this.locale];
   }
 
   toggleInfo() {
