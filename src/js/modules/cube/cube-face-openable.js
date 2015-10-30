@@ -30,13 +30,17 @@ class CubeFaceOpenable extends CubeFace {
       style.transform = "rotateY(-150deg)";
       style.transformOrigin = "left";
       style.opacity = 0;
+
+      if (isBackface) {
+        style.backfaceVisibility = "visible";
+      } else {
+        style.backfaceVisibility = "hidden";
+      }
     }
 
     if (isBackface) {
-      style.backfaceVisibility = "visible";
       style.backgroundImage = `url(${this.props.assetLeftBack})`;
     } else {
-      style.backfaceVisibility = "hidden";
       style.zIndex = 10;
       style.backgroundImage = `url(${this.props.assetLeft})`;
     }
@@ -52,13 +56,17 @@ class CubeFaceOpenable extends CubeFace {
       style.transform = "rotateY(150deg)";
       style.transformOrigin = "right";
       style.opacity = 0;
+      
+      if (isBackface) {
+        style.backfaceVisibility = "visible";
+      } else {
+        style.backfaceVisibility = "hidden";
+      }
     }
     
     if (isBackface) {
-      style.backfaceVisibility = "visible";
       style.backgroundImage = `url(${this.props.assetRightBack})`;
     } else {
-      style.backfaceVisibility = "hidden";
       style.zIndex = 10;
       style.backgroundImage = `url(${this.props.assetRight})`;
     }
