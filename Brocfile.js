@@ -2,6 +2,7 @@ const funnel = require('broccoli-funnel');
 const concat = require('broccoli-concat');
 const mergeTrees = require('broccoli-merge-trees');
 const babelTranspiler = require('broccoli-babel-transpiler');
+const uglify = require('broccoli-uglify-js');
 
 const pkg = require('./package.json');
 const src = 'src';
@@ -39,9 +40,9 @@ var npmComponents = [
 
 const vendorPath = 'vendor';
 var vendorComponents = [
-  'html2canvas/html2canvas.min.js',
-  'download.js/download.js',
-  'fabric.js/fabric.min.js',
+  //'html2canvas/html2canvas.min.js',
+  //'download.js/download.js',
+  //'fabric.js/fabric.min.js',
   'tab-active/tab-active.js'
 ]
 
@@ -77,4 +78,4 @@ const js = concat(allJs, {
 });
 
 /* Output JS Files & Index HTML */
-module.exports = mergeTrees([html, js, assets, env, static]);
+module.exports = mergeTrees([html, uglify(js), assets, env, static]);
