@@ -13,6 +13,7 @@ class Global {
     this.toggleInfoStack          = [];
     this.readyStack               = [];
     this.boxOpenStack             = [];
+    this.boxClickedStack          = [];
     this.element                  = element;
     this.assetPath                = `${element.dataset.assetPath}assets`;
     this.locale                   = `${element.dataset.localeCode}` || "en";
@@ -32,6 +33,16 @@ class Global {
     }
 
     return i18n[this.locale];
+  }
+  
+  boxClicked() {
+    this.boxClickedStack.map(callback => {
+      callback();
+    });
+  }
+
+  onBoxClick(callback) {
+    this.boxClickedStack.push(callback);
   }
 
   toggleInfo() {

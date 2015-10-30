@@ -15,6 +15,8 @@ class Cube extends Assetable {
 
   handleClick = () => {
     if (this.state.visibleFace !== "front") {
+      const Global = window.eamesInteractive;
+      Global.boxClicked();
       this.setState({ visibleFace: "front" });
       setTimeout(this.flattenBox, 1500);
     }

@@ -15,7 +15,6 @@ To install the Eames Interactive Story onto a HTML Page, the markup should look 
       lineThreeB:  "to turn it on or off.",
       lineFour:    "Invite your friends to join in on the fun.",
       twitter:     "Compose and play with this %23Eames-inspired interactive toy, created by @LabourNY for @HermanMiller. %23EamesPlay",
-      facebook:    "Compose and play with this %23Eames-inspired interactive toy, created by @LabourNY for @HermanMiller. %23EamesPlay",
       creditLineA: "Inspired by the work of Ray and Charles Eames. Created by",
       creditLineB: "for Herman Miller, Inc."
     }

@@ -151,8 +151,7 @@ class Button extends Interactable {
         }
         break;
       case 'shareFacebook':
-        let post = window.eamesInteractive.translations.facebook;
-        this.fbShare(window.location.href, 'Share', post, 520, 350);
+        this.fbShare(window.location.href, 'Share', 520, 350);
         break;
       case 'shareTwitter':
         let tweet = window.eamesInteractive.translations.twitter;
@@ -161,10 +160,10 @@ class Button extends Interactable {
     }
   }
 
-  fbShare(url, title, descr, winWidth, winHeight) {
+  fbShare(url, title, winWidth, winHeight) {
     var winTop = (screen.height / 2) - (winHeight / 2);
     var winLeft = (screen.width / 2) - (winWidth / 2);
-    window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + 'hello'+ '&p[url]=' + url, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
+    window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[url]=' + url, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
   }
   
   twitterShare(url, tweet, winWidth, winHeight) {
