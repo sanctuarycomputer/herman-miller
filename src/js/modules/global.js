@@ -1,7 +1,7 @@
 import Artboard from 'herman-miller/modules/artboard';
 import Loader from 'herman-miller/modules/loader';
 import Viewport from 'herman-miller/modules/viewport';
-
+import Sound from 'herman-miller/modules/sound';
 
 class Global {
   constructor(element) {
@@ -21,6 +21,7 @@ class Global {
     this.loader                   = new Loader();
     this.registry                 = [];
     this.infoScreenActive         = false;
+    this.isIE = /*@cc_on!@*/false || !!document.documentMode; // At least IE6
   }
 
   _setupTranslations() {
@@ -56,7 +57,53 @@ class Global {
   }
 
   start() {
-    React.render(<Viewport seed={1} format={'background'} assetFormat={'jpg'} />, this.element);
+    if (this.isIE) {
+      this._buildBrowserError();
+    } else {
+      // Load Sounds
+      this.Sound = new Sound();
+      // Start Experience
+      React.render(<Viewport seed={1} format={'background'} assetFormat={'jpg'} />, this.element);
+    }
+  }
+
+  _buildBrowserError() {
+    let image = document.createElement('img');
+    image.src = `${this.assetPath}/upgrade/0101.jpg`;
+
+    image.setAttribute('style', 'width: 980px; height: 551px;');
+    image.style.width  = '980px';
+    image.style.height = '551px';
+    
+    let firstLine     = document.createElement('H2');
+    let firstLineText = document.createTextNode(this.translations.ieErrorA);
+    firstLine.appendChild(firstLineText);
+    
+    let secondLine     = document.createElement('H2');
+    let secondLineText = document.createTextNode(this.translations.ieErrorB);
+    secondLine.appendChild(secondLineText);
+    
+    let textContainer = document.createElement('DIV');
+    textContainer.appendChild(firstLine);
+    textContainer.appendChild(secondLine);
+
+    textContainer.setAttribute('style', `
+      position: absolute;
+      width: 980px;
+      text-align: center;
+      font-family: 'ff-meta-web-pro', Helvetica, Arial, sans-serif;
+      color: white;
+      top: 200px;
+    `)
+    textContainer.style.position       = 'absolute';
+    textContainer.style.width          = '980px';
+    textContainer.style['text-align']  = 'center';
+    textContainer.style['font-family'] = "'ff-meta-web-pro', Helvetica, Arial, sans-serif";
+    textContainer.style.color          = 'white';
+    textContainer.style.top            = '200px';
+
+    this.element.appendChild(textContainer);
+    this.element.appendChild(image)
   }
 
   screenshot() {
