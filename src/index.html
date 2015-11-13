@@ -8,11 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body style="margin: 0">
+    <style type="text/css">
+      @font-face {
+        font-family: 'ff-meta-web-pro';
+        src: url('./assets/fonts/ff-meta-web-pro.eot'); /* IE9 Compat Modes */
+        src: url('./assets/fonts/ff-meta-web-pro.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('./assets/fonts/ff-meta-web-pro.woff') format('woff'), /* Pretty Modern Browsers */
+            url('./assets/fonts/ff-meta-web-pro.ttf')  format('truetype'), /* Safari, Android, iOS */
+            url('./assets/fonts/ff-meta-web-pro.svg#ff-meta-web-pro') format('svg'); /* Legacy iOS */
+      }
+    </style> 
 
-    <div id="eames-interactive-story" data-asset-path="http://herman-miller.s3-website-us-east-1.amazonaws.com/" data-locale-code="en"></div>
+    <div id="eames-interactive-story" data-asset-path="http://localhost:4200/" data-locale-code="en"></div>
     <script>
       window.eamesInteractiveStoryTranslations = {
         en: {
+          ieErrorA:    "For the full interactive experience,",
+          ieErrorB:    "use the latest browser from Chrome, Firefox, or Safari.",
           lineOne:     "Ready to compose and play? Click on any object to introduce something new.",
           lineTwo:     "To play with scale, click and drag the upper left corner of any object.",
           lineThreeA:  "Jazz is delightful, but not all the time. Toggle the",

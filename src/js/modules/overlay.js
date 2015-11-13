@@ -134,7 +134,7 @@ class Overlay extends React.Component {
           <Image seed={1} format={'button'} assetFormat={'svg'} />
           <p style={[this.style.inlineBlock, this.style.bumpHack]}>{this.state.translations.lineThreeB}</p>
           
-          <p>{this.state.translations.lineFour}</p>
+          <p style={this.style.marginTop}>{this.state.translations.lineFour}</p>
 
           <div>
             <Button seed={5} format={'button'} assetFormat={'svg'} variation={'shareFacebook'} />
